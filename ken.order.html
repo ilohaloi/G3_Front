@@ -284,20 +284,20 @@
                     <div class="th-account-form">
                         <h2>訂購頁面</h2>
                         <p>請填寫以下資訊以完成您的訂購：</p>
-                        
+
                         <form action="submitOrder" method="post">
                             <label for="customerName">姓名:</label>
                             <input type="text" id="customerName" name="customerName" required>
-    
+
                             <label for="customerAddress">地址:</label>
                             <input type="text" id="customerAddress" name="customerAddress" required>
-    
+
                             <label for="customerPhone">電話號碼:</label>
                             <input type="tel" id="customerPhone" name="customerPhone" required>
-    
+
                             <label for="customerEmail">電子郵件:</label>
                             <input type="email" id="customerEmail" name="customerEmail" required>
-    
+
                             <label for="journey">行程選擇:</label>
                             <select id="journey" name="journey" required>
                                 <option value="">-- 請選擇 --</option>
@@ -305,10 +305,10 @@
                                 <option value="行程2">行程2:沖繩</option>
                                 <option value="行程3">行程3:熊本城</option>
                             </select>
-    
+
                             <label for="couponCode">優惠券:</label>
                             <input type="text" id="couponCode" name="couponCode">
-    
+
                             <label for="roomType">房間類型:</label>
                             <select id="roomType" name="roomType" required>
                                 <option value="">-- 請選擇 --</option>
@@ -316,14 +316,17 @@
                                 <option value="雙人房">雙人房</option>
                                 <option value="套房">套房</option>
                             </select>
-    
+
                             <label for="orderTotal">總金額:</label>
                             <input type="text" id="orderTotal" name="orderTotal" required readonly>
-    
+
                             <button type="submit">提交訂單</button>
+
+
+
                         </form>
                         <button onclick="window.location.href='index.html';">返回首頁</button>
-    
+
                         <p>若您有任何問題，請透過以下方式聯絡我們：</p>
                         <ul>
                             <li>客服電話: 02-1234-5678</li>
@@ -334,7 +337,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <!--========= Footer Area 頁尾區 ===========-->
 
@@ -465,29 +468,25 @@
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+    <script>
+        function loadHtml(placeholderId, url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch ${url}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(placeholderId).innerHTML = data;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
 
-    <<<<<<< HEAD=======>>>>>>> main
-        <!-- 動態載入 header 和 footer -->
-        <script>
-            function loadHtml(placeholderId, url) {
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Failed to fetch ${url}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById(placeholderId).innerHTML = data;
-                    })
-                    .catch(error => console.error('Error loading HTML:', error));
-            }
-
-            // 載入 header 和 footer
-            loadHtml('breadcumb-wrapper', 'breadcumb.html');
-            loadHtml('footer-wrapper footer-layout1', 'footer.html');
-        </script>
-        <<<<<<< HEAD=======>>>>>>> main
+        // 載入 header 和 footer
+        loadHtml('breadcumb-wrapper', 'breadcumb.html');
+        loadHtml('footer-wrapper footer-layout1', 'footer.html');
+    </script>
 </body>
 
 </html>
