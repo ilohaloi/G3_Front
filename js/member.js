@@ -120,14 +120,25 @@ try {
         },
         body: JSON.stringify(loginData)
     });
+    credentials: 'include' // 包含 Cookie 以處理 Session
 
     // 檢查是否登錄成功
     if (response.ok) {
         const result = await response.json();
         if (result.success) {
             alert('登入成功');
-            // 可以在此處重定向到會員頁面
-            window.location.href = 'my-frontpage.html';
+            
+            // 從 localStorage 獲取原來的頁面 URL
+            const redirectUrl = localStorage.getItem('redirectUrl');
+            
+            // 清除保存的 URL 並重定向
+            if (redirectUrl) {
+                localStorage.removeItem('redirectUrl');
+                window.location.href = redirectUrl;
+            } else {
+                // 如果沒有保存的 URL，重定向到預設的會員頁面
+                window.location.href = 'my-frontpage.html';
+            }
         } else {
             alert('登入失敗：' + result.message);
         }
@@ -137,9 +148,45 @@ try {
 } catch (error) {
     console.error('Fetch 錯誤:', error);
     alert('連接伺服器失敗，請檢查網路連線或稍後再試。');
-}});
+}
+});
 
 //------------------會員登入------------------//
+
+//------------------會員資料修改------------------//
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 獲取會員資料並顯示在表單中
+    fetch('http://localhost:8080/TIA103G3_Servlet/getOneMember', {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('獲取會員資料失敗，請重新登入');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // 將會員資料顯示到 HTML 表單中
+        document.getElementById('username').value = data.username;
+        document.getElementById('check_email').value = data.email;
+        document.getElementById('phone').value = data.phone;
+        document.getElementById('check_address').value = data.address;
+        document.getElementById('birthday').value = data.birthday;
+
+        // 禁止修改生日，如果生日已經填寫
+        if (data.birthday) {
+            document.getElementById('birthday').disabled = true;
+            document.getElementById('birthday').parentElement.insertAdjacentHTML('beforeend', '<p style="color: red;">提醒：生日只能填寫一次，無法再次修改。</p>');
+        }
+    })
+    .catch(error => {
+        console.error('錯誤:', error);
+        window.location.href = 'login.html'; // 如果未登入則重定向到登入頁面
+    });
+});
+//------------------會員資料修改------------------//
 
 
     // // 新增：顯示/隱藏密碼功能
