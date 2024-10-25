@@ -53,6 +53,8 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--自訂-->
+    <link rel="stylesheet" href="./assets/css/member.css">
 
 </head>
 
@@ -223,7 +225,7 @@
                         <div class="header-right">
                             <div class="header-links">
                                 <a href="#login-form" class="popup-content">登入 / 註冊<i
-                                        class="fa-regular fa-user"></i></a>
+                                        class="fa-regular fa-user"></i></a> 
                             </div>
                         </div>
                     </div>
@@ -270,113 +272,82 @@
     </header>
 
     <!--========= Breadcumb 麵包屑 ========== -->
-    <div class="breadcumb-wrapper " data-bg-src="assets/img/bg/breadcumb-bg.jpg">
-        <div class="container">
-            <div class="breadcumb-content">
-                <h1 class="breadcumb-title">My account</h1>
-                <ul class="breadcumb-menu">
-                    <li><a href="home-travel.html">Home</a></li>
-                    <li>My account</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+    <div id="breadcumb-wrapper"></div>
+
+
     <!--========= Team Area 團隊區 ============-->
-    <section class="space">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="th-account-form">
-                        <form action="/update_member" method="POST">
-                            <label for="username">姓名:</label>
-                            <input type="text" id="username" name="username" required>
-                    
-                            <label for="phone">電話號碼:</label>
-                            <input type="tel" id="check_tell" name="check_tell" required>
+    <body>
 
-                            <label for="address">地址:</label>
-                            <input type="text" id="check_address" name="check_address" required>
-                    
-                            <label for="birthday">生日:</label>
-                            <input type="date" id="check_birthday" name="check_birthday">
-
-                            <label for="password">密碼:</label>
-                            <input type="text" id="check_password" name="check_password">
-
-                            <label for="check_password_confirm">再次確認密碼:</label>
-                            <input type="text" id="check_password_confirm" name="check_password_confirm">
-                    
-                            <button type="submit">提交修改</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        <header>
+            <h1>探索熊本</h1>
+        </header>
+        
+        <main>
+            <p>熊本以其壯麗的城堡、自然美景、豐富的文化和美味的料理而聞名，是理想的旅遊目的地。</p>
+            
+            <img src="/assets/img/ken/3.jpg" alt="熊本風景" width="300" height="200">
+    
+            
+            <h2>行程規劃</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>活動</th>
+                        <th>地點</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>抵達熊本</td>
+                        <td>熊本市</td>
+                        <td>熊本的首府，以歷史和文化聞名。</td>
+                    </tr>
+                    <tr>
+                        <td>參觀熊本城</td>
+                        <td>熊本市</td>
+                        <td>日本三大名城之一，壯麗的建築和美麗的園區。</td>
+                    </tr>
+                    <tr>
+                        <td>探索水前寺成趣園</td>
+                        <td>熊本市</td>
+                        <td>擁有美麗的日式庭園和古老的茶室。</td>
+                    </tr>
+                    <tr>
+                        <td>品嚐熊本拉麵</td>
+                        <td>熊本市</td>
+                        <td>著名的豚骨拉麵，濃郁的湯頭令人難忘。</td>
+                    </tr>
+                    <tr>
+                        <td>參觀熊本動物園</td>
+                        <td>熊本市</td>
+                        <td>家庭友好的動物園，適合全家共遊。</td>
+                    </tr>
+                    <tr>
+                        <td>返回熊本，結束行程</td>
+                        <td>熊本市</td>
+                        <td>整理行李，準備回程。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+        <footer>
+            &copy; 2024 熊本旅遊
+        </footer>
+        <button onclick="window.location.href='destination.html';">返回行程</button>
+        <button onclick="window.location.href='ken.order.html';">訂購頁面</button>
+    </body>
+        
+        
+    
+    
+    
     <!--========= Footer Area 頁尾區 ===========-->
-    <footer class="footer-wrapper footer-layout1">
-        <div class="widget-area">
-            <div class="container">
 
-                <div class="row justify-content-between">
-                    <div class="col-md-6 col-xl-3">
-                        <div class="widget footer-widget">
-                            <div class="th-widget-about">
-                                <div class="about-logo">
-                                    <a href="home-travel.html"><img src="assets/img/logo3.svg" alt="Tourm"></a>
-                                </div>
-                                <p class="about-text">Rapidiously myocardinate cross-platform intellectual capital
-                                    model. Appropriately create interactive infrastructures</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-auto">
-                        <div class="widget footer-widget">
-                            <h3 class="widget_title">Address</h3>
-                            <div class="th-widget-contact">
-                                <div class="info-box_text">
-                                    <div class="icon">
-                                        <img src="assets/img/icon/phone.svg" alt="img">
-                                    </div>
-                                    <div class="details">
-                                        <p><a href="tel:+01234567890" class="info-box_link">+01 234 567 890</a></p>
-                                    </div>
-                                </div>
-                                <div class="info-box_text">
-                                    <div class="icon">
-                                        <img src="assets/img/icon/envelope.svg" alt="img">
-                                    </div>
-                                    <div class="details">
-                                        <p><a href="mailto:mailinfo00@tourm.com"
-                                                class="info-box_link">mailinfo00@tourm.com</a></p>
-                                    </div>
-                                </div>
-                                <div class="info-box_text">
-                                    <div class="icon"><img src="assets/img/icon/location-dot.svg" alt="img"></div>
-                                    <div class="details">
-                                        <p>789 Inner Lane, Holy park, California, USA</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div id="footer-wrapper footer-layout1"></div>
 
-                </div>
-            </div>
-        </div>
-        <div class="copyright-wrap" data-bg-src="assets/img/bg/copyright_bg_1.jpg">
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-md-6">
-                        <p class="copyright-text"><a href="home-travel.html">Tourm</a>. All Rights Reserved.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </footer>
 
     <!--********* Code End  Here  ******** -->
 
@@ -389,11 +360,11 @@
         </svg>
     </div>
     <!--========== modal Area  ==============-->
-<!--
+    <!--
     <div id="login-form" class="popup-login-register mfp-hide">
 -->
-        <!-- 登入/註冊 大標籤 -->
-<!--
+    <!-- 登入/註冊 大標籤 -->
+    <!--
         <ul class="nav" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
@@ -406,8 +377,8 @@
             </li>
         </ul>
 -->
-        <!-- 登入/註冊 輸入框 -->
-         <!---
+    <!-- 登入/註冊 輸入框 -->
+    <!---
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="th-login-form">
@@ -434,10 +405,10 @@
                     </form>
                 </div>
             </div>-->
-<!--          <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+    <!--          <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
                 aria-labelledby="pills-profile-tab">
---> 
-<!---                <form action="mail.php" method="POST" class="login-form ajax-contact">
+-->
+    <!---                <form action="mail.php" method="POST" class="login-form ajax-contact">
                     <div class="row">
                         <div class="form-group col-12">
                             <label>電子信箱*</label>
@@ -503,9 +474,28 @@
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
 
-      <!-- 自訂-->
-      <script src="/js/member_u.js"></script>
+    <<<<<<< HEAD=======>>>>>>> main
+        <!-- 動態載入 header 和 footer -->
+        <script>
+            function loadHtml(placeholderId, url) {
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to fetch ${url}`);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById(placeholderId).innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading HTML:', error));
+            }
 
+            // 載入 header 和 footer
+            loadHtml('breadcumb-wrapper', 'breadcumb.html');
+            loadHtml('footer-wrapper footer-layout1', 'footer.html');
+        </script>
+        <<<<<<< HEAD=======>>>>>>> main
 </body>
 
 </html>

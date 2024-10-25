@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tourm - Travel & Tour Booking Agency HTML Template - Destination</title>
+    <title>Tourm - Travel & Tour Booking Agency HTML Template - My account</title>
     <meta name="author" content="Tourm">
     <meta name="description" content="Tourm - Travel & Tour Booking Agency HTML Template ">
     <meta name="keywords" content="Tourm - Travel & Tour Booking Agency HTML Template ">
@@ -32,9 +32,7 @@
     <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <!--==============================
-	  Google Fonts
-	============================== -->
+    <!--=========== Google Fonts ======== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,9 +41,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap"
         rel="stylesheet">
 
-    <!--==============================
-	    All CSS File
-	============================== -->
+    <!--=========== All CSS File ========== -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Fontawesome Icon -->
@@ -57,6 +53,8 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--自訂-->
+    <link rel="stylesheet" href="./assets/css/member.css">
 
 </head>
 
@@ -67,19 +65,12 @@
   	<![endif]-->
 
 
-    <!--********************************
-   		Code Start From Here 
-	******************************** -->
-
+    <!--********* Code Start From Here ********** -->
     <div class="magic-cursor relative z-10">
         <div class="cursor"></div>
         <div class="cursor-follower"></div>
     </div>
-
-
-    <!--==============================
-     Preloader
-  ==============================-->
+    <!--=====   Preloader  預先載入器 =============-->
     <div id="preloader" class="preloader ">
         <button class="th-btn preloaderCls">Cancel Preloader </button>
         <div class="preloader-inner">
@@ -102,9 +93,8 @@
             </div>
         </div>
 
-    </div> <!--==============================
-    Sidemenu
-============================== -->
+    </div>
+    <!--======== Sidemenu 側邊菜單 =========== -->
     <div class="sidemenu-wrapper sidemenu-info ">
         <div class="sidemenu-content">
             <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
@@ -192,9 +182,8 @@
             <input type="text" placeholder="What are you looking for?">
             <button type="submit"><i class="fal fa-search"></i></button>
         </form>
-    </div><!--==============================
-    Mobile Menu
-  ============================== -->
+    </div>
+    <!--========= Mobile Menu  行動選單======== -->
     <div class="th-menu-wrapper onepage-nav">
         <div class="th-menu-area text-center">
             <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
@@ -213,9 +202,8 @@
                 </ul>
             </div>
         </div>
-    </div><!--==============================
-    	Header Area
-    ==============================-->
+    </div>
+    <!--========= Header Area 標題區   =======-->
     <header class="th-header header-layout1">
         <div class="header-top">
             <div class="container th-container">
@@ -236,8 +224,8 @@
                     <div class="col-auto">
                         <div class="header-right">
                             <div class="header-links">
-                                <a href="#login-form" class="popup-content">Sign In / Register<i
-                                        class="fa-regular fa-user"></i></a>
+                                <a href="#login-form" class="popup-content">登入 / 註冊<i
+                                        class="fa-regular fa-user"></i></a> 
                             </div>
                         </div>
                     </div>
@@ -282,140 +270,84 @@
             </div>
         </div>
     </header>
-    <!--==============================
-    Breadcumb
-============================== -->
-    <div class="breadcumb-wrapper " data-bg-src="assets/img/bg/breadcumb-bg.jpg">
-        <div class="container">
-            <div class="breadcumb-content">
-                <h1 class="breadcumb-title">行程</h1>
-                <ul class="breadcumb-menu">
-                    <li><a href="home-travel.html">Home</a></li>
-                    <li>所有航線</li>
-                </ul>
-            </div>
-        </div>
-    </div><!--==============================
-Product Area
-==============================-->
-    <section class="space">
-        <div class="container">
-            <!-- TODO  改浮動 -->
-            <div class="row">
-                <div class="col-xxl col-lg">
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade active show" id="tab-grid" role="tabpanel"
-                            aria-labelledby="tab-destination-grid">
-                            <div class="row gy-30">
-                                <div class="col-xxl-4 col-xl-3 col-sm-12">
-                                    <div class="tour-box th-ani">
-                                        <div class="tour-box_img global-img">
-                                            <img src="assets/img/tour/北海道.jpg" alt="image">
-                                        </div>
-                                        <div class="tour-content">
 
-                                            <h3 class="box-title"><a href="tour-guider-details.html">北海道</a></h3>
+    <!--========= Breadcumb 麵包屑 ========== -->
 
-                                            <div class="tour-rating">
-                                                <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
-                                                    <span style="width:100%">Rated
-                                                        <strong class="rating">5.00</strong> out of 5 based on <span
-                                                            class="rating">4.8</span>(4.8
-                                                        Rating)</span>
-                                                </div>
-                                                <div class="woocommerce-review-link"><span class="count">(4.7
-                                                        Rating)</span>
-                                                </div>
-                                            </div>
-
-                                            <h4 class="tour-box_price"><span class="currency">$1280.00</span>/Person
-                                            </h4>
-                                            <div class="tour-action">
-                                                <span><i class="fa-light fa-clock"></i>8 Days</span>
-                                                <a href="./ken.journey.Hokkaido.html" class="th-btn style4 th-icon">瀏覽行程</a>
-                                                <a href="./ken.order.html" class="th-btn style4 th-icon">訂購行程</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xxl-4 col-xl-6">
-                                    <div class="tour-box th-ani">
-                                        <div class="tour-box_img global-img">
-                                            <img src="assets/img/tour/沖繩1.jpeg" alt="image">
-                                        </div>
-                                        <div class="tour-content">
-
-                                            <h3 class="box-title"><a href="tour-guider-details.html">沖繩</a></h3>
-
-                                            <div class="tour-rating">
-                                                <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
-                                                    <span style="width:100%">
-                                                    </span>
-                                                </div>
-                                                <div class="woocommerce-review-link"><span class="count">(4.8
-                                                        Rating)</span>
-                                                </div>
-                                            </div>
-                                            <h4 class="tour-box_price"><span class="currency">$880.00</span>/Person</h4>
-                                            <div class="tour-action">
-                                                <span><i class="fa-light fa-clock"></i>7 Days</span>
-
-                                                <a href="./ken.journey.Okinawa.html" class="th-btn style4 th-icon">瀏覽行程</a>
-                                                <a href="./ken.order.html" class="th-btn style4 th-icon">訂購行程</a>
+    <div id="breadcumb-wrapper"></div>
 
 
+    <!--========= Team Area 團隊區 ============-->
+    <body>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <header>
+            <h1>探索北海道</h1>
+        </header>
+        
+        <main>
+            <p>北海道以其壯麗的自然風光、獨特的文化、美味的海鮮和溫泉聞名，是理想的旅遊目的地。</p>
+            
+            <img src="/assets/img/ken/1.jpg" alt="北海道風景" width="300" height="200">
 
-                                <div class="col-xxl-4 col-xl-6">
-                                    <div class="tour-box th-ani">
-                                        <div class="tour-box_img global-img">
-                                            <img src="assets/img/tour/熊本城.jpg" alt="image">
-                                        </div>
-                                        <div class="tour-content">
+            
+            <h2>行程規劃</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>活動</th>
+                        <th>地點</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>抵達札幌</td>
+                        <td>札幌市</td>
+                        <td>北海道的首府，充滿活力與現代化。</td>
+                    </tr>
+                    <tr>
+                        <td>參觀大通公園</td>
+                        <td>札幌</td>
+                        <td>知名公園，春天櫻花滿開，夏天花海如潮。</td>
+                    </tr>
+                    <tr>
+                        <td>前往小樽運河</td>
+                        <td>小樽市</td>
+                        <td>浪漫運河邊的歷史建築，適合漫遊。</td>
+                    </tr>
+                    <tr>
+                        <td>享受天然溫泉</td>
+                        <td>登別溫泉</td>
+                        <td>著名溫泉區，讓身心完全放鬆。</td>
+                    </tr>
+                    <tr>
+                        <td>品嚐當地海鮮</td>
+                        <td>函館市</td>
+                        <td>以新鮮海鮮著稱，夜市美食不容錯過。</td>
+                    </tr>
+                    <tr>
+                        <td>返回札幌，結束行程</td>
+                        <td>札幌</td>
+                        <td>整理行李，準備回程。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+        <footer>
+            &copy; 2024 北海道旅遊
+        </footer>
+        <button onclick="window.location.href='destination.html';">返回行程</button>
+        <button onclick="window.location.href='ken.order.html';">訂購頁面</button>
+        
+    
+    
+    
+    <!--========= Footer Area 頁尾區 ===========-->
 
-                                            <h3 class="box-title"><a href="tour-guider-details.html">熊本城</a></h3>
+    <div id="footer-wrapper footer-layout1"></div>
 
 
-
-                                            <div class="tour-rating">
-                                                <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
-                                                    <span style="width:100%">Rated
-                                                        <strong class="rating">5.00</strong> out of 5 based on <span
-                                                            class="rating">4.8</span>(4.8
-                                                        Rating)</span>
-                                                </div>
-                                                <div class="woocommerce-review-link"><span class="count">(4.6
-                                                        Rating)</span>
-                                                </div>
-                                            </div>
-
-                                            <h4 class="tour-box_price"><span class="currency">$780.00</span>/Person</h4>
-                                            <div class="tour-action">
-                                                <span><i class="fa-light fa-clock"></i>5 天</span>
-                                                <a href="./ken.journey.Xiong Benzheng.html" class="th-btn style4 th-icon">瀏覽行程</a>
-                                                <a href="./ken.order.html" class="th-btn style4 th-icon">訂購行程</a>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--********************************
-			Code End  Here 
-	******************************** -->
+    <!--********* Code End  Here  ******** -->
 
     <!-- Scroll To Top -->
     <div class="scroll-top">
@@ -425,91 +357,87 @@ Product Area
             </path>
         </svg>
     </div>
-    <!--==============================
-modal Area  
-==============================-->
+    <!--========== modal Area  ==============-->
+    <!--
     <div id="login-form" class="popup-login-register mfp-hide">
+-->
+    <!-- 登入/註冊 大標籤 -->
+    <!--
         <ul class="nav" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                    type="button" role="tab" aria-controls="pills-home" aria-selected="false">Login</button>
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="false">登入</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-menu active" id="pills-profile-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                    aria-selected="true">Register</button>
+                    aria-selected="true">註冊</button>
             </li>
         </ul>
+-->
+    <!-- 登入/註冊 輸入框 -->
+    <!---
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <h3 class="box-title mb-30">Sign in to your account</h3>
                 <div class="th-login-form">
                     <form action="mail.php" method="POST" class="login-form ajax-contact">
                         <div class="row">
                             <div class="form-group col-12">
-                                <label>Username or email</label>
+                                <label>電子信箱</label>
                                 <input type="text" class="form-control" name="email" id="email" required="required">
                             </div>
                             <div class="form-group col-12">
-                                <label>Password</label>
+                                <label>密碼</label>
                                 <input type="password" class="form-control" name="pasword" id="pasword"
                                     required="required">
                             </div>
 
                             <div class="form-btn mb-20 col-12">
-                                <button class="th-btn btn-fw th-radius2 ">Send Message</button>
+                                <button class="th-btn btn-fw th-radius2 ">登入</button>
                             </div>
                         </div>
                         <div id="forgot_url">
-                            <a href="my-account.html">Forgot password?</a>
+                            <a href="my-account.html">忘記密碼</a>
                         </div>
                         <p class="form-messages mb-0 mt-3"></p>
                     </form>
                 </div>
-            </div>
-            <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+            </div>-->
+    <!--          <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
                 aria-labelledby="pills-profile-tab">
-                <h3 class="th-form-title mb-30">Sign in to your account</h3>
-                <form action="mail.php" method="POST" class="login-form ajax-contact">
+-->
+    <!---                <form action="mail.php" method="POST" class="login-form ajax-contact">
                     <div class="row">
                         <div class="form-group col-12">
-                            <label>Username*</label>
-                            <input type="text" class="form-control" name="usename" id="usename" required="required">
-                        </div>
-                        <div class="form-group col-12">
-                            <label>First name*</label>
-                            <input type="text" class="form-control" name="firstname" id="firstname" required="required">
-                        </div>
-                        <div class="form-group col-12">
-                            <label>Last name*</label>
+                            <label>電子信箱*</label>
                             <input type="text" class="form-control" name="lastname" id="lastname" required="required">
                         </div>
                         <div class="form-group col-12">
-                            <label for="new_email">Your email*</label>
+                            <label for="new_email">密碼*</label>
                             <input type="text" class="form-control" name="new_email" id="new_email" required="required">
                         </div>
                         <div class="form-group col-12">
-                            <label for="new_email_confirm">Confirm email*</label>
+                            <label for="new_email_confirm">再次輸入密碼*</label>
                             <input type="text" class="form-control" name="new_email_confirm" id="new_email_confirm"
                                 required="required">
                         </div>
-                        <div class="statement">
-                            <span class="register-notes">A password will be emailed to you.</span>
-                        </div>
-
                         <div class="form-btn mt-20 col-12">
-                            <button class="th-btn btn-fw th-radius2 ">Sign up</button>
+                            <button class="th-btn btn-fw th-radius2 ">註冊</button>
                         </div>
                     </div>
                     <p class="form-messages mb-0 mt-3"></p>
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
+->
 
-    <!--==============================
-    All Js File
-============================== -->
+
+
+
+
+
+<!-========== All Js File =========== -->
     <!-- Jquery -->
     <!-- Jquery -->
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
@@ -541,10 +469,31 @@ modal Area
     <script src="assets/js/nice-select.min.js"></script>
 
 
-
-
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+
+    <<<<<<< HEAD=======>>>>>>> main
+        <!-- 動態載入 header 和 footer -->
+        <script>
+            function loadHtml(placeholderId, url) {
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to fetch ${url}`);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById(placeholderId).innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading HTML:', error));
+            }
+
+            // 載入 header 和 footer
+            loadHtml('breadcumb-wrapper', 'breadcumb.html');
+            loadHtml('footer-wrapper footer-layout1', 'footer.html');
+        </script>
+        <<<<<<< HEAD=======>>>>>>> main
 </body>
 
 </html>
