@@ -34,7 +34,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
             window.location.replace('my-frontpage.html');
   
         } else if(response.status === 401){
-            alert('登入失敗，帳號為註冊');
+            alert('登入失敗，請先註冊帳號');
         }
     } catch (error) {
         console.error('Fetch 錯誤:', error);
