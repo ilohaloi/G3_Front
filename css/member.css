@@ -3,7 +3,7 @@
     font-size: 20px;
 }
 .memTopMenuSpace {
-    /* background-color: #343a40; */
+    background-color: #343a40;
 }
 
 .memTopMenuWrap {
@@ -207,10 +207,6 @@
     }
   }
   
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 /* --========= 折扣碼 ============-*/
 
 /* 整體樣式 */
@@ -415,4 +411,10 @@ cupon {
 
 .no-coupons a:hover {
   background-color: #16a34a;
+}
+
+.breadcumb-wrapper {
+  background-image: url('/TIA103_Poject_Cruiseship_frontend/assets/img/bg/breadcumb-bg.jpg');
+  background-size: cover;
+  background-position: center;
 }

@@ -1,0 +1,56 @@
+#journey {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px; /* 限制內容寬度，使排版更美觀 */
+}
+
+#journey header, #journey main, #journey footer {
+    width: 100%;
+}
+
+#journey img {
+    margin: 20px 0;
+}
+
+#journey table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#journey table, #journey th, #journey td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#journey th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#journey button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#journey button:hover {
+    background-color: #0056b3;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* 將按鈕置中 */
+    margin: 20px 0; /* 調整按鈕的上下邊距 */
+}
+
+.button-container button {
+    margin: 0 10px; /* 調整按鈕之間的間距 */
+}

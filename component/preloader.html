@@ -1,0 +1,39 @@
+<!--=====   Preloader  預先載入器 =============-->
+<div id="preloader" class="preloader">
+    <button class="th-btn preloaderCls">Cancel Preloader</button>
+    <div class="preloader-inner">
+        <img src="/TIA103_Poject_Cruiseship_frontend/assets/img/logo3.svg" alt="">
+    </div>
+
+    <div id="loader" class="th-preloader">
+        <div class="animation-preloader">
+            <div class="txt-loading">
+                <span preloader-text="T" class="characters">T </span>
+                <span preloader-text="O" class="characters">O </span>
+                <span preloader-text="U" class="characters">U </span>
+                <span preloader-text="R" class="characters">R </span>
+                <span preloader-text="M" class="characters">M </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const preloaderTimeout = 0;
+    let preloaderTimer;
+
+    function hidePreloader() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.display = 'none'; // 隱藏預加載器
+        window.scrollTo(0, 0); // 滾動到頁面頂端
+    }
+
+    window.onload = function () {
+        clearTimeout(preloaderTimer);
+        hidePreloader();
+    };
+
+    preloaderTimer = setTimeout(hidePreloader, preloaderTimeout);
+
+    document.querySelector('.preloaderCls').addEventListener('click', hidePreloader);
+</script>
