@@ -276,41 +276,38 @@
     <div id="breadcumb-wrapper"></div>
 
 
-    <!--========= Team Area 團隊區 ============-->
-    <section class="space">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="th-account-form">
-                        <form action="/update_member" method="POST">
-                            <label for="username">姓名:</label>
-                            <input type="text" id="username" name="username" required>
+<!--========= Team Area 團隊區 ============-->
+<section class="space">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="th-account-form">
+                    <form action="/update_member" method="POST">
+                        <label for="username">姓名:</label>
+                        <input type="text" id="username" name="username" required>
+                
+                        <label for="phone">電話號碼:</label>
+                        <input type="tel" id="check_tell" name="check_tell" required>
 
-                            <label for="email">電子郵件:</label>
-                            <input type="email" id="email" name="email" required>
+                        <label for="address">地址:</label>
+                        <input type="text" id="check_address" name="check_address" required>
+                
+                        <label for="birthday">生日:</label>
+                        <input type="date" id="check_birthday" name="check_birthday">
 
-                            <label for="phone">電話號碼:</label>
-                            <input type="tel" id="phone" name="phone" required>
+                        <label for="password">密碼:</label>
+                        <input type="text" id="check_password" name="check_password">
 
-                            <label for="phone">地址:</label>
-                            <input type="text" id="address" name="address" required>
-
-                            <label for="birthday">生日:</label>
-                            <input type="date" id="birthday" name="birthday">
-
-                            <label for="password">密碼:</label>
-                            <input type="password" id="password" name="password">
-
-                            <label for="password_comfirm">再次確認密碼:</label>
-                            <input type="password" id="password_comfirm" name="address">
-
-                            <button type="submit">提交修改</button>
-                        </form>
-                    </div>
+                        <label for="check_password_confirm">再次確認密碼:</label>
+                        <input type="text" id="check_password_confirm" name="check_password_confirm">
+                
+                        <button type="submit">提交修改</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!--========= Footer Area 頁尾區 ===========-->
 
@@ -463,8 +460,9 @@
         loadHtml('footer-wrapper footer-layout1', 'footer.html');
     </script>
 
-    <!--自訂新增-->
-    <script src=""></script>
+    <!--自訂會員修改資料-->
+    <script src="./js/member_check.js"></script>
+    <script src="./js/member_update.js"></script>
 </body>
 
 </html>
