@@ -8,19 +8,19 @@
     inputs.forEach(input => {
         let originalValue = input.value; // 保存原本的值
 
-        // 當 input 獲得焦點時，清空值
+        // 當 input 獲得焦點時，不清空值，允許直接修改
         input.addEventListener('focus', function () {
-            originalValue = this.value; // 保存當前值
-            this.value = ''; // 清空值
+            originalValue = this.value; // 保存當前值，以防需要恢復
         });
 
-        // 當 input 失去焦點時，恢復原本的值
+        // 當 input 失去焦點時，恢復原本的值（如果未輸入新內容）
         input.addEventListener('blur', function () {
-            if (this.value === '') { // 如果沒有輸入新值
+            if (this.value.trim() === '') { // 如果沒有輸入有效的新值
                 this.value = originalValue; // 恢復為原本的值
             }
         });
     });
+
 
 
     // 設置生日欄位的行為
@@ -30,9 +30,9 @@
     }
 
     // 表單提交時的處理
-    const memberForm = document.querySelector('form');
+    const memberForm = document.getElementById('memberUpdateForm');
     memberForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 防止表單預設提交行為
+        event.preventDefault();
 
         // 從表單中取得輸入的資料
         const updatedMemberData = {
@@ -43,6 +43,7 @@
             password: document.getElementById('check_password').value,
             password_confirm: document.getElementById('check_password_confirm').value
         };
+        console.log("123");
 
         // 簡單驗證：確認密碼是否一致
         if (updatedMemberData.password !== updatedMemberData.password_confirm) {

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('check_tell').value = data.tell !== null ? data.tell : '請填寫您的電話';
             document.getElementById('check_address').value = data.address !== null ? data.address : '請填寫您的地址';
             document.getElementById('check_birthday').value = data.birthday !== null ? data.birthday : '請填寫您的生日';
-            document.getElementById('check_password').value = maskPassword(data.password);
+            
         })
         .catch(error => {
             console.error('無法取得會員資料');

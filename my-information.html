@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="th-account-form">
-                    <form action="/update_member" method="POST">
+                    <form id="memberUpdateForm">
                         <label for="username">姓名:</label>
                         <input type="text" id="username" name="username" required>
                 
@@ -47,13 +47,13 @@
                         <label for="birthday">生日:</label>
                         <input type="date" id="check_birthday" name="check_birthday">
 
-                        <label for="password">密碼:</label>
+                        <label for="password">請輸入新密碼:</label>
                         <input type="text" id="check_password" name="check_password">
 
-                        <label for="check_password_confirm">再次確認密碼:</label>
+                        <label for="check_password_confirm">再次確認新密碼:</label>
                         <input type="text" id="check_password_confirm" name="check_password_confirm">
                 
-                        <button type="submit">提交修改</button>
+                        <button type="submit" id="member_update_submit">提交修改</button>
                     </form>
 
                 </div>
