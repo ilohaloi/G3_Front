@@ -1,0 +1,16 @@
+.team {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 0;
+}
+h1, h2 {
+    color: #333;
+}
+p {
+    margin: 0.5em 0;
+}
+.team {
+    max-width: 800px;
+    margin: 0 auto;
+}
