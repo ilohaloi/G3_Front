@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loginData)  
+                body: JSON.stringify(loginData)
             });
 
             // 檢查是否登錄成功
@@ -32,15 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const email = await response.json();
                 console.log(email);
-                localStorage.setItem("account",email.email);
+                localStorage.setItem("account", email.email);
                 window.location.replace('my-frontpage.html');
-            
-            } else if(response.status === 401){
+            } else if (response.status === 401) {
                 alert('登入失敗，請先註冊帳號');
             }
         } catch (error) {
-            console.error('Fetch 錯誤:', error);
-            alert('連接伺服器失敗，請檢查網路連線或稍後再試。');
+            console.log(error);
         }
     // localStorage.clear();
     });
