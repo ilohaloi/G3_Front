@@ -78,8 +78,6 @@ export function totalUpdate(cart) {
     let total = cart.reduce((sum, obj) => sum + obj.qty * obj.price, 0);
     return total;
 }
-
-
 export async function insertOrder(data) { 
     try {
         const cart = JSON.parse(localStorage.getItem('cart'));

@@ -1,5 +1,6 @@
+
 //------------------會員註冊------------------//
-document.addEventListener("DOMContentLoaded", function () {
+
 document.getElementById('registerBtn').addEventListener('click', function(event) {
     event.preventDefault(); // 防止表單的默認提交行為
 
@@ -91,7 +92,7 @@ document.getElementById('registerBtn').addEventListener('click', function(event)
         disableButton(false);
     });
 });
-});
+
 
 
 //------------------會員註冊------------------//
