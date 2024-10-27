@@ -76,7 +76,8 @@
                 <div class="col-auto">
                     <div class="header-right">
                         <div class="header-links">
-                            <a href="#login-form" class="popup-content">登入 / 註冊<i class="fa-regular fa-user"></i></a>
+                            <a href="home-travel.html" id="logoutBtn">登出<i class="fa-regular fa-user"></i></a>
+                            <a href="#login-form" id="login-popup" class="popup-content">登入 / 註冊<i class="fa-regular fa-user"></i></a>
                             <div id="login-form" class="popup-login-register mfp-hide">
 
                                 <!-- 登入/註冊 大標籤 -->
@@ -103,17 +104,17 @@
                                                 <div class="row">
                                                     <div class="form-group col-12">
                                                         <label>電子信箱</label>
-                                                        <input type="text" class="form-control" name="email" id="email"
+                                                        <input type="text" class="form-control" name="email" id="login_email"
                                                             required="required">
                                                     </div>
                                                     <div class="form-group col-12">
                                                         <label>密碼</label>
                                                         <input type="password" class="form-control" name="pasword"
-                                                            id="pasword" required="required">
+                                                            id="login_password" required="required">
                                                     </div>
 
                                                     <div class="form-btn mb-20 col-12">
-                                                        <button class="th-btn btn-fw th-radius2 ">登入</button>
+                                                        <button id="loginBtn" class="th-btn btn-fw th-radius2 ">登入</button>
                                                     </div>
                                                 </div>
                                                 <div id="forgot_url">
@@ -131,20 +132,20 @@
                                                 <div class="form-group col-12">
                                                     <label>電子信箱*</label>
                                                     <input type="text" class="form-control" name="lastname"
-                                                        id="lastname" required="required">
+                                                        id="register_email" required="required">
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label for="new_email">密碼*</label>
                                                     <input type="text" class="form-control" name="new_email"
-                                                        id="new_email" required="required">
+                                                        id="register_password" required="required">
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label for="new_email_confirm">再次輸入密碼*</label>
                                                     <input type="text" class="form-control" name="new_email_confirm"
-                                                        id="new_email_confirm" required="required">
+                                                        id="password_confirm" required="required">
                                                 </div>
                                                 <div class="form-btn mt-20 col-12">
-                                                    <button class="th-btn btn-fw th-radius2 ">註冊</button>
+                                                    <button id="registerBtn" class="th-btn btn-fw th-radius2 ">註冊</button>
                                                 </div>
                                             </div>
                                             <p class="form-messages mb-0 mt-3"></p>
@@ -166,19 +167,20 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
                         <div class="header-logo">
-                            <a href="index.html"><img src="assets/img/logo.svg" alt="Tourm"></a>
+                            <a href="home-travel.html"><img src="assets/img/logo.svg" alt="Tourm"></a>
                         </div>
                     </div>
                     <div class="col-auto me-xl-auto">
                         <nav class="main-menu d-none d-xl-inline-block">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="home-travel.html">Home</a></li>
                                 <li><a href="destination.html">Destination</a></li>
                                 <!-- TODO  -->
                                 <li><a href="#">Shop</a></li>
                                 <!-- <li><a href="error.html">Error Page</a></li> -->
                                 <li><a href="faq.html">FAQ</a></li>
                                 <li><a href="about.html">About Us</a></li>
+                                <li><a href="my-frontpage.html">Member</a></li>
                             </ul>
                         </nav>
                         <button type="button" class="th-menu-toggle d-block d-xl-none"><i
@@ -229,3 +231,7 @@
 <script src="assets/js/nice-select.min.js"></script>
 <!-- Main Js File -->
 <script src="assets/js/main.js"></script>
+<!-- member-login js -->
+<script src="/js/member_login.js"></script>
+<script src="/js/member_logout.js"></script>
+<script src="/js/member_register.js"></script>
