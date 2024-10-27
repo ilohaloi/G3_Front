@@ -11,21 +11,21 @@
     <!-- 移動設備元數據 Mobile Specific Metas  -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-   <!-- 網站圖標 Favicons - Place favicon.ico in the root directory  -->
-   <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
-   <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
-   <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
-   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
-   <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
-   <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
-   <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
-   <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
-   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
-   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-   <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <!-- 網站圖標 Favicons - Place favicon.ico in the root directory  -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
 
     <!-- 色彩配置 -->
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -75,12 +75,12 @@
                 </div>
                 <div class="col-auto">
                     <div class="header-right">
+
                         <div class="header-links">
                             <a href="#login-form" class="popup-content">登入 / 註冊<i class="fa-regular fa-user"></i></a>
+
                             <div id="login-form" class="popup-login-register mfp-hide">
-
                                 <!-- 登入/註冊 大標籤 -->
-
                                 <ul class="nav" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill"
@@ -96,24 +96,27 @@
 
                                 <!-- 登入/註冊 輸入框 -->
                                 <div class="tab-content" id="pills-tabContent">
+                                    <!-- 登入表單 -->
                                     <div class="tab-pane fade" id="pills-home" role="tabpanel"
                                         aria-labelledby="pills-home-tab">
                                         <div class="th-login-form">
-                                            <form action="mail.php" method="POST" class="login-form ajax-contact">
+                                            <form action="/MemberLogin" method="POST" class="login-form ajax-contact">
                                                 <div class="row">
                                                     <div class="form-group col-12">
                                                         <label>電子信箱</label>
-                                                        <input type="text" class="form-control" name="email" id="email"
-                                                            required="required">
+                                                        <input type="email" class="form-control" name="login_email"
+                                                            id="login_email" required="required">
                                                     </div>
                                                     <div class="form-group col-12">
                                                         <label>密碼</label>
-                                                        <input type="password" class="form-control" name="pasword"
-                                                            id="pasword" required="required">
+                                                        <input type="password" class="form-control"
+                                                            name="login_password" id="login_password"
+                                                            required="required">
                                                     </div>
-
+                                                    <a href="/auth/google">使用 Google 登入</a>
                                                     <div class="form-btn mb-20 col-12">
-                                                        <button class="th-btn btn-fw th-radius2 ">登入</button>
+                                                        <button id="loginBtn" type="submit"
+                                                            class="th-btn btn-fw th-radius2">登入</button>
                                                     </div>
                                                 </div>
                                                 <div id="forgot_url">
@@ -123,28 +126,36 @@
                                             </form>
                                         </div>
                                     </div>
+
                                     <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
                                         aria-labelledby="pills-profile-tab">
-
-                                        <form action="mail.php" method="POST" class="login-form ajax-contact">
+                                        <form class="login-form ajax-contact" id="registerForm">
                                             <div class="row">
                                                 <div class="form-group col-12">
+                                                    <label for="name">姓名*</label>
+                                                    <input type="text" class="form-control" name="register_name"
+                                                        id="register_name" required="required">
+                                                </div>
+                                                <div class="form-group col-12">
                                                     <label>電子信箱*</label>
-                                                    <input type="text" class="form-control" name="lastname"
-                                                        id="lastname" required="required">
+                                                    <input type="email" class="form-control" name="register_email"
+                                                        id="register_email" required="required">
                                                 </div>
                                                 <div class="form-group col-12">
-                                                    <label for="new_email">密碼*</label>
-                                                    <input type="text" class="form-control" name="new_email"
-                                                        id="new_email" required="required">
+                                                    <label for="password">密碼*</label>
+                                                    <input type="password" class="form-control" name="register_password"
+                                                        id="register_password" required="required">
                                                 </div>
                                                 <div class="form-group col-12">
-                                                    <label for="new_email_confirm">再次輸入密碼*</label>
-                                                    <input type="text" class="form-control" name="new_email_confirm"
-                                                        id="new_email_confirm" required="required">
+                                                    <label for="password_confirm" style="color: red;">再次輸入密碼*</label>
+                                                    <input type="password" class="form-control" name="password_confirm"
+                                                        id="password_confirm" required="required"
+                                                        style="border-color: red;">
+                                                    <!-- 修改 ID 屬性，原本為 password_comfirm -->
                                                 </div>
                                                 <div class="form-btn mt-20 col-12">
-                                                    <button class="th-btn btn-fw th-radius2 ">註冊</button>
+                                                    <button id="registerBtn" type="button"
+                                                        class="th-btn btn-fw th-radius2">註冊</button>
                                                 </div>
                                             </div>
                                             <p class="form-messages mb-0 mt-3"></p>
@@ -227,3 +238,5 @@
 <script src="assets/js/nice-select.min.js"></script>
 <!-- Main Js File -->
 <script src="assets/js/main.js"></script>
+<script src="./js/member_login.js" defer></script>
+<script src="./js/member_register.js" defer></script>

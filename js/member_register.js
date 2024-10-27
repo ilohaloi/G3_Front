@@ -1,3 +1,4 @@
+
 //------------------會員註冊------------------//
 
 document.getElementById('registerBtn').addEventListener('click', function(event) {
@@ -49,7 +50,7 @@ document.getElementById('registerBtn').addEventListener('click', function(event)
     disableButton(true);
 
     // 使用 Fetch API 提交表單數據
-    fetch('http://localhost:8080/TIA103G3_Servlet/MemberRegister', {
+    fetch('http://localhost:8081/TIA103G3_Servlet/MemberRegister', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,5 +92,7 @@ document.getElementById('registerBtn').addEventListener('click', function(event)
         disableButton(false);
     });
 });
+
+
 
 //------------------會員註冊------------------//

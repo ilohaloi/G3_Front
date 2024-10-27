@@ -1,0 +1,123 @@
+/* 嵌入字體 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+div {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+input[type="text"] {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+p {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+
+
+
+#chat-container {
+    position: fixed; /* 固定定位，讓聊天室固定在視窗的指定位置 */
+    bottom: 20px; /* 距離視窗底部20px */
+    left: 20px; /* 距離視窗左邊20px，這樣聊天室顯示在左下角 */
+    width: 300px; /* 聊天室的寬度為300px */
+    height: 400px; /* 聊天室的初始高度為400px */
+    border: 0px solid #ccc; /* 邊框為1px的實線，顏色為淡灰色 */
+    background-color: #b7ccdd; /* 背景顏色設為白色 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加陰影，使視窗看起來立體，陰影的顏色為半透明黑色 */
+    z-index: 1000; /* 將聊天室放在其他內容上方，避免被其他元素遮蓋 */
+    transition: height 0.3s ease; /* 當高度改變時，應用0.3秒的過渡效果，使高度變化更加平滑 */
+    border-radius: 20px; 
+}
+
+#chat-header {
+    background-color: #1ca8cb; /* 聊天視窗標題的背景顏色，設為藍色 */
+    border-radius: 20px 20px 0px 0px; 
+    color: white; /* 標題文字顏色設為白色 */
+    padding: 10px; /* 標題區域內部的留白為10px，讓文字不緊貼邊緣 */
+    cursor: pointer; /* 鼠標移到標題上時，顯示指針圖標，表示可以點擊 */
+}
+
+
+
+#chat-content {
+    padding: 10px; /* 內容區域內部的留白為10px，讓內容不緊貼邊緣 */
+    height: 290px; /* 內容區域的高度為320px，這樣加上標題和輸入框，高度總共是400px */
+    overflow-y: auto; /* 若內容超出高度限制，垂直方向出現滾動條，方便查看更多內容 */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cus_Message, .csMessage {
+    max-width: 75%; /* 設定最大寬度，以控制訊息框的寬度 */
+    min-width: 10%; /* 設定最小寬度，避免訊息框過小 */
+    word-wrap: break-word; /* 啟用自動換行 */
+    overflow-wrap: break-word; /* 確保單詞在換行時不會溢出 */
+    padding: 6px 12px; /* 調整內邊距，使訊息框在換行時保持一致的距離 */
+    margin: 4px 5px; /* 調整外邊距，使訊息框之間間距均勻 */
+    border-radius: 12px; /* 調整圓角，讓訊息框更美觀 */
+    font-size: 14px; /* 設定文字大小 */
+    line-height: 1.4; /* 調整行高，使多行文字的間距更一致 */
+    display: inline-block; /* 使用 inline-block 讓訊息框的寬度隨內容變化 */
+    white-space: pre-wrap; /* 保留空白字符並啟用換行 */
+}
+
+/* 客戶訊息樣式，靠右對齊 */
+.cus_Message {
+    background-color: #DCF8C6; /* 設定客戶訊息框背景顏色 */
+    align-self: flex-end; /* 將訊息框靠右對齊 */
+    text-align: right; /* 設置文字靠右對齊 */
+}
+
+/* 客服訊息樣式，靠左對齊 */
+.csMessage {
+    background-color: #F1F0F0; /* 設定客服訊息框背景顏色 */
+    align-self: flex-start; /* 將訊息框靠左對齊 */
+    text-align: left; /* 設置文字靠左對齊 */
+}
+
+
+#chatInput {
+    background-color: #1ca8cb; /* 聊天視窗標題的背景顏色，設為藍色 */
+    border-radius: 0 0 20px 20px; /* 修正此處，設為圓角 */
+    position: absolute; /* 固定在螢幕上某個位置 */
+    bottom: 0; /* 固定在視窗的底部 */
+    width: 100%; /* 讓它充滿螢幕寬度 */
+    padding: 10px; /* 添加內邊距讓內容不緊貼邊緣 */
+    display: flex; /* 使用 flexbox 排列按鈕 */
+}
+
+#inputField {
+    position: relative;
+    top: 0px;      /* -10:往上10px */
+    width: 80%; /* 設定寬度 */
+    height: 40px;
+    padding: 10px; /* 設定內距 */
+    border: 1px solid #ccc; /* 設定邊框 */
+    border-radius: 5px; /* 圓角 */
+    font-size: 11px; /* 字體大小 */
+}
+#sendButton {
+    background-image: url('/ourFile/dev_chat/send.png');  /* 設置背景圖片 */
+    background-size: contain;  /* 讓背景圖片適應按鈕大小 */
+    width: 20px; 
+    height: 20px; 
+    background-color: transparent;/* 設置背景顏色為透明，避免白色區域 */
+    border:none;
+    position: relative;  /* 設置為相對定位 */
+    top: 10px;  /* 向下移動 10px */
+    left: 5px;  /* 向右移動 5px */
+}
+
+#sendButton:hover {
+    background-color: #0056b3; /* 鼠標懸停時按鈕變暗 */
+}
+
+
+
+
