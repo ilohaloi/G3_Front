@@ -1580,4 +1580,19 @@ $(".to").text("$" + $(".price_slider").slider("values", 1));
     //     } 
     //   }   
 
+    $(document).ready(function () {
+
+        var loginBtn = $('#login-popup');
+        var logoutBtn = $('#logoutBtn');
+
+        // 檢查 localStorage 中的帳戶資料
+        if (localStorage.getItem("account") === null) {
+            logoutBtn.hide();  // 隱藏 Logout 按鈕
+            loginBtn.show();   // 顯示 Login 按鈕
+        } else {
+            logoutBtn.show();  // 顯示 Logout 按鈕
+            loginBtn.hide();   // 隱藏 Login 按鈕
+        }
+    });
+
 })(jQuery);
