@@ -9,6 +9,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
 
+    console.log("222222222222222222222222");
     // 構造要發送到後端的資料
     const loginData = {
         email: email,
@@ -17,7 +18,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
 
     try {
         // 發送 POST 請求到後端 API
-        const response = await fetch('http://localhost:8080/TIA103G3_Servlet/MemberLogin', {
+        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/MemberLogin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,12 +28,12 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
         
         // 檢查是否登錄成功
         if (response.status === 200) {
-            
+
             const email = await response.json();
-            console.log(email);
-            localStorage.setItem("account",email.email);
+            console.log(email); // {id : 1}
+            localStorage.setItem("account",email.id);
             window.location.replace('my-frontpage.html');
-  
+        
         } else if(response.status === 401){
             alert('登入失敗，請先註冊帳號');
         }
