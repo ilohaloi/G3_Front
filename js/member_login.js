@@ -9,6 +9,10 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
     // 獲取電子信箱和密碼輸入框的值
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
+
+    // 將密碼存儲到localStorage (不推薦，僅示範)
+    localStorage.setItem("password", password);
+    
     // 構造要發送到後端的資料
     const loginData = {
         email: email,
@@ -27,7 +31,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
         if (response.status === 200) {
             const email = await response.json();
             console.log(email);
-            localStorage.setItem("account", email.email);
+            localStorage.setItem("ID", email.id);
             window.location.replace('my-frontpage.html');
         } else if (response.status === 401) {
             alert('登入失敗，請先註冊帳號');
@@ -72,6 +76,3 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
 
     //     document.getElementById('registerForm').submit();
     // });
-
-
-

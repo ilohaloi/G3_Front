@@ -44,8 +44,10 @@
                         <label for="address">地址:</label>
                         <input type="text" id="check_address" name="check_address" required>
                 
-                        <label for="birthday">生日:</label>
+                        <label for="birthday" >生日:</label>
+                        <span id="birthdayNote" style="color: red; font-size: 0.9em;">只能輸入一次，請小心輸入</span>
                         <input type="date" id="check_birthday" name="check_birthday">
+                        
 
                         <label for="password">請輸入新密碼:</label>
                         <input type="text" id="check_password" name="check_password">
@@ -100,6 +102,8 @@
         $('#footer-wrapper').load('./component/footer.html');
     </script>
 
+    <script src="./js/member_check.js"></script>
+    <script src="./js/member_update.js"></script>
 </body>
 
 </html>
