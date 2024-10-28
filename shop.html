@@ -340,7 +340,7 @@
             <div class="th-checkout-wrapper">
                 <div class="container">
                     <div class="woocommerce-checkout mt-40">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-lg-6">
                                 <h2 class="h4">會員資料</h2>
                                 <div class="row">
@@ -476,7 +476,9 @@
             },
             methods: {
                 custDataClear() {
-                    this.cust.name = "";
+                    if (localStorage.getItem('cart') === null)
+                        if (sessionStorage.getItem('cart') === null)
+                            this.cust.name = "";
                     this.cust.shipaddr = "";
                     this.cust.email = "";
                     this.cust.phone = "";
@@ -565,71 +567,16 @@
         app.mount('#app')
     </script>
 
-
-    <!-- <section class="space-top space-extra-bottom">
-        <div class="container">
-            <div class="row gy-40">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade active show" id="tab-grid" role="tabpanel"
-                        aria-labelledby="tab-shop-grid">
-                        <div class="row gy-40">
-                            <div class="col-xl-3 col-sm-6">
-                                <div class="th-product product-grid">
-                                    <div class="product-img">
-                                        <img src="assets/img/product/product_1_8.png" alt="Product Image">
-                                        <span class="product-tag">Sale</span>
-                                        <div class="actions">
-                                            <a href="#Qucikview" class="icon-btn popup-content"><i
-                                                    class="far fa-eye"></i></a>
-                                            <a href="cart.html" class="icon-btn"><i class="far fa-cart-plus"></i></a>
-                                            <a href="wishlist.html" class="icon-btn"><i class="far fa-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <h3 class="product-title"><a href="shop-details.html">V-Neck T-Shirt</a></h3>
-                                        <span class="price">$35.00</span>
-                                        <div class="woocommerce-product-rating">
-                                            <span class="count">(5.00 Review)</span>
-                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
-                                                <span>Rated <strong class="rating">5.00</strong> out of 5 based on <span
-                                                        class="rating">1</span> customer rating</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    
-    <!--===  elements Area  ======-->
-    <div class="elements-sec bg-white overflow-hidden">
-        <div class="container-fluid">
-            <div class="tags-container relative"></div>
-        </div>
-    </div>
-
     <!--========= Footer Area 頁尾區 ===========-->
     <div id="footer-wrapper"></div>
-
     <!-- script 標籤 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#mobile-menu').load('./component/mobile_menu.html');
-
         $('#sidemenu').load('./component/sidemenu.html');
-
         $('#header').load('./component/header.html');
-
         $('#footer-wrapper').load('./component/footer.html');
     </script>
-
 </body>
 
 </html>

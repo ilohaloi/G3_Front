@@ -2,20 +2,21 @@
 
 // 綁定登入按鈕的點擊事件
 // 當使用者點擊登入按鈕時觸發這個函數
+
+ 
 document.getElementById('loginBtn').addEventListener('click', async function (e) {
     e.preventDefault(); // 阻止表單的默認提交行為
-
     // 獲取電子信箱和密碼輸入框的值
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
 
     console.log("222222222222222222222222");
+  
     // 構造要發送到後端的資料
     const loginData = {
         email: email,
         password: password
     };
-
     try {
         // 發送 POST 請求到後端 API
         const response = await fetch('http://localhost:8081/TIA103G3_Servlet/MemberLogin', {
@@ -23,12 +24,11 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(loginData)  
+            body: JSON.stringify(loginData)
         });
-        
         // 檢查是否登錄成功
         if (response.status === 200) {
-
+          
             const email = await response.json();
             console.log(email); // {id : 1}
             localStorage.setItem("account",email.id);
@@ -38,11 +38,10 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
             alert('登入失敗，請先註冊帳號');
         }
     } catch (error) {
-        console.error('Fetch 錯誤:', error);
-        alert('連接伺服器失敗，請檢查網路連線或稍後再試。');
+        console.log(error);
     }
-    // localStorage.clear();
-  });
+// localStorage.clear();
+});
 
 //------------------會員登入------------------//
 
