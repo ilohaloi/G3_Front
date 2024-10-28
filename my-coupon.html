@@ -49,19 +49,31 @@
                     <div class="flex justify-between items-center pl-[30px] pr-6 border-t-2 pt-2">
                         <div class="discount-tab">
                             <ul class="ez-tab-content ez-tab-common-v1">
-                                <li class="active"><span class="ez-tab-item">可使用</span></li>
-                                <li class=""><span class="ez-tab-item">已使用</span></li>
-                                <li class=""><span class="ez-tab-item">已過期</span></li>
+                                <li class="active">
+                                    <span class="ez-tab-item" onclick="showCoupons('usable')">可使用</span>
+                                </li>
+                                <li>
+                                    <span class="ez-tab-item" onclick="showCoupons('used')">已使用</span>
+                                </li>
+                                <li>
+                                    <span class="ez-tab-item" onclick="showCoupons('expired')">已過期</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <div id="usableCoupons" class="coupon-list"></div> <!-- 顯示可使用的優惠券 -->
+                <div id="usedCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已使用的優惠券 -->
+                <div id="expiredCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已過期的優惠券 -->
+
                 <!-- 當沒有優惠碼的情況 -->
-                <div class="no-coupons">
+                <div class="no-coupons" style="display: none;">
                     <img src="./assets/img/member/coupon.png" alt="No Coupons">
-                    <p>尚無折扣碼，來首頁看看有什麼優惠吧！</p>
-                    <a href="./index.html">回到首頁</a>
+                    <p>尚無折扣碼，來<a
+                            href="http://127.0.0.1:5501/TIA103_Poject_Cruiseship_frontend/index.html">首頁</a>看看有什麼優惠吧！
+                    </p>
+                    <a id="home" href="./index.html">回到首頁</a>
                 </div>
             </div>
         </div>
