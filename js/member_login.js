@@ -10,8 +10,9 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
 
-    console.log("222222222222222222222222");
-  
+
+   
+    localStorage.setItem("password", password);
     // 構造要發送到後端的資料
     const loginData = {
         email: email,
@@ -30,8 +31,9 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
         if (response.status === 200) {
           
             const email = await response.json();
-            console.log(email); // {id : 1}
-            localStorage.setItem("account",email.id);
+            console.log(email);
+            localStorage.setItem("ID", email.id);
+
             window.location.replace('my-frontpage.html');
         
         } else if(response.status === 401){
@@ -77,6 +79,3 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
 
     //     document.getElementById('registerForm').submit();
     // });
-
-
-
