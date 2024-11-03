@@ -37,12 +37,12 @@
         </div>
     </div>
     <!--========= Team Area 團隊區 ============-->
-    <section class="space" style="display: none;">
+    <!-- <section class="space" style="display: none;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="th-account-form">
-                        <form action="mail.php" method="POST" class="account-form ajax-contact">
+                        <form action="javascript:void(0)" method="POST" class="account-form ajax-contact">
                             <h3 class="text-center mt-n2 mb-30">重設密碼</h3>
                             <div class="row">
                                 <div class="form-group col-12">
@@ -55,6 +55,30 @@
                                 </div>
                             </div>
                             <p class="form-messages mb-0 mt-3"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="space" style="display: none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="th-account-form">
+                        <form id="resetPasswordForm" action="javascript:void(0);" method="POST" class="account-form">
+                            <h3 class="text-center mt-n2 mb-30">重設密碼</h3>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label>請輸入您的帳號，將郵寄新的密碼至您的電子信箱</label>
+                                    <input type="email" class="form-control" name="resetPW_email" id="resetPW_email" placeholder="">
+                                </div>
+    
+                                <div class="form-btn col-12">
+                                    <button type="submit" class="th-btn btn-fw th-radius2">取得新密碼</button>
+                                </div>
+                            </div>
+                            <p id="formMessages" class="form-messages mb-0 mt-3"></p>
                         </form>
                     </div>
                 </div>
@@ -90,6 +114,7 @@
 
         $('#footer-wrapper').load('./component/footer.html');
     </script>
+    <script src="./js/member_forgetPassword.js"></script>
 </body>
 
 </html>

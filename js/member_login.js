@@ -10,7 +10,6 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
 
-    console.log("222222222222222222222222");
 
     // 構造要發送到後端的資料
     const loginData = {
@@ -28,17 +27,12 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
         });
         // 檢查是否登錄成功
         if (response.status === 200) {
-            const responseData = await response.json();
-            console.log("後端回傳的資料：", responseData); // 檢查回傳的格式
+            const email = await response.json();
+            localStorage.setItem("ID", email.id);
 
-            if (responseData && responseData.id) {
-                localStorage.setItem("account", responseData.id);
-                window.location.replace('my-frontpage.html');
-            } else {
-                console.error("後端回傳的資料格式不正確，無法獲取 ID。");
-                alert("登入失敗，請稍後再試。");
-            }
-        } else if (response.status === 401) {
+            window.location.replace('my-frontpage.html');
+        
+        } else if(response.status === 401){
             alert('登入失敗，請先註冊帳號');
         }
     } catch (error) {
@@ -72,13 +66,6 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
 //         alert('密碼必須至少包含 8 個字元');
 //         return;
 //     }
-
-//     if (password !== passwordConfirm) {
-//         alert('兩次輸入的密碼不一致');
-//         return;
-//     }
-
-//     document.getElementById('registerForm').submit();
-// });
-
+    //     document.getElementById('registerForm').submit();
+    // });
 

@@ -1,6 +1,5 @@
-    //----------------會員資料修改----------------//
-    // 當 DOM 完全加載後執行
-    document.addEventListener("DOMContentLoaded", function () {
+//----------------會員資料修改----------------//
+document.addEventListener("DOMContentLoaded", function () {
 
     // 選取所有 input 元素並添加 focus 和 blur 事件
     const inputs = document.querySelectorAll('input[type="text"], input[type="tel"], input[type="date"]');
@@ -21,29 +20,43 @@
         });
     });
 
+        // 設置生日欄位的行為
+        const birthdayInput = document.getElementById('check_birthday');
+        if (birthdayInput.value) { // 如果生日欄位已有值
+            birthdayInput.setAttribute('readonly', true); // 設置為只讀狀態，禁止修改
+        }
 
+        // 設置密碼欄位為 password 類型，輸入時顯示 *
+        const passwordInput = document.getElementById('check_password');
+        const passwordConfirmInput = document.getElementById('check_password_confirm');
+        passwordInput.setAttribute('type', 'password');
+        passwordConfirmInput.setAttribute('type', 'password');
 
-    // 設置生日欄位的行為
-    const birthdayInput = document.getElementById('check_birthday');
-    if (birthdayInput.value) { // 如果生日欄位已有值
-        birthdayInput.setAttribute('readonly', true); // 設置為只讀狀態，禁止修改
-    }
-
-    // 表單提交時的處理
-    const memberForm = document.getElementById('memberUpdateForm');
-    memberForm.addEventListener('submit', function (event) {
+        // 表單提交時的處理
+        const memberForm = document.getElementById('memberUpdateForm');
+        memberForm.addEventListener('submit', function (event) {
         event.preventDefault();
+
+        // 檢查 password 欄位是否為空，若為空則從 localStorage 中取得密碼
+        const passwordField = document.getElementById('check_password');
+        const confirm_passwordField = document.getElementById('check_password_confirm');
+        let password = passwordField.value;
+        if (!password) { // 如果 password 為空
+            password = localStorage.getItem('password'); // 從 localStorage 中取得密碼
+            passwordField.value = password; // 將取得的密碼填入輸入欄位
+            confirm_passwordField.value = password;
+        }
 
         // 從表單中取得輸入的資料
         const updatedMemberData = {
+            id: localStorage.getItem('ID'), 
             name: document.getElementById('username').value,
             tell: document.getElementById('check_tell').value,
             address: document.getElementById('check_address').value,
             birthday: document.getElementById('check_birthday').value,
-            password: document.getElementById('check_password').value,
+            password: password, // 使用處理後的 password 值
             password_confirm: document.getElementById('check_password_confirm').value
         };
-        console.log("123");
 
         // 簡單驗證：確認密碼是否一致
         if (updatedMemberData.password !== updatedMemberData.password_confirm) {
@@ -52,7 +65,7 @@
         }
 
         // 使用 Fetch API 發送 POST 請求給後端進行會員資料修改
-        fetch('http://localhost:8080/TIA103G3_Servlet/updateMember', {
+        fetch('http://localhost:8081/TIA103G3_Servlet/updateMember', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,22 +79,14 @@
             return response.json();
         })
         .then(data => {
-            if (data.success) {
-                alert('會員資料更新成功');
-                if (updatedMemberData.password) { // 如果使用者有更新密碼
-                    alert('請重新登入以驗證您的新密碼。');
-                    window.location.href = 'my-account.html'; // 跳轉至登入頁面
-                }
-            } else {
-                alert('會員資料更新失敗，請重試'); // 如果更新失敗，顯示失敗提示
-            }
+            // 處理回應數據
+            console.log('更新成功', data);
+            alert('會員資料更新成功！');
         })
         .catch(error => {
-            console.error('無法更新會員資料', error); // 打印錯誤訊息到控制台，並且顯示詳細錯誤
-            alert('更新會員資料時發生錯誤，請稍後再試'); // 顯示錯誤提示給用戶
+            console.error('更新失敗:', error);
+            alert('更新失敗，請稍後再試。');
         });
     });
-
 });
-
- //----------------會員資料修改----------------//
+//----------------會員資料修改----------------//
