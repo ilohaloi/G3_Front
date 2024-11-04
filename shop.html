@@ -411,11 +411,11 @@
                                             <img width="91" height="91" :src="item.imgs" alt="Image">
                                         </router-link>
                                     </td>
-                                        <td data-title="Name">
-                                            <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
-                                            {{item.name}}
-                                            </router-link>
-                                        </td>
+                                    <td data-title="Name">
+                                        <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
+                                        {{item.name}}
+                                        </router-link>
+                                    </td>
                                     <td data-title="Price">
                                         <span class="amount"><bdi><span>$</span>{{item.price}}</bdi></span>
                                     </td>

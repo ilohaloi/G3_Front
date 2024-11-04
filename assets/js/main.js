@@ -1586,7 +1586,7 @@ $(".to").text("$" + $(".price_slider").slider("values", 1));
         var logoutBtn = $('#logoutBtn');
 
         // 檢查 localStorage 中的帳戶資料
-        if (localStorage.getItem("account") === null) {
+        if (localStorage.getItem("id") === null) {
             logoutBtn.hide();  // 隱藏 Logout 按鈕
             loginBtn.show();   // 顯示 Login 按鈕
         } else {
