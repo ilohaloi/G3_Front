@@ -13,35 +13,45 @@ window.addEventListener('beforeunload', function () {
 
 // window.onload = function () {
 document.addEventListener('DOMContentLoaded', function() {
-    
-        // Check if the customer is logged in by looking for their ID in sessionStorage
-        // const membId = sessionStorage.getItem('membId'); // Retrieve the customer ID
+    const fetchChatById = (id) => {
+        console.log("Fetching chat history for ID:", id);
+        
+        fetch(`http://localhost:8081/TIA103G3_Servlet/api/chat/history?id=${id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(historyMap => {
+                const chatBox = document.querySelector('#chat-content');
+                chatBox.innerHTML = ""; // 清空舊的聊天紀錄
+                
+                const targetKey = `chat:history:${id}`;
+                const historyList = historyMap[targetKey];
 
-        // if (!membId) {
-        //     alert('請先登入才能使用聊天室');
-        //     window.location.href = 'login.html'; // Redirect to the login page if not logged in
-        //     return;
-        // }
+                if (Array.isArray(historyList)) {
+                    historyList.forEach((message) => {
+                        
+                        const messageData = JSON.parse(message);
+                        const pTag = document.createElement('p');
+                        pTag.textContent = messageData.content;
 
-    // if(sessionStorage.getItem("ws") ==true){
-    //     ws.onopen = function () {
-    //         console.log("Connected to WebSocket");
-    //         // document.getElementById("status").innerText = "已連接";
-    //     };
+                        if (messageData.sender === "employ") {
+                            pTag.classList.add('left-message'); // 發出的訊息
+                        } else {
+                            pTag.classList.add('right-message'); // 接收的訊息
+                        }
 
-    //     // 接收來自伺服器的訊息
-    //     ws.onmessage = function (event) {
-    //         console.log("MSG:"+event.data);
-    //         displayMessage(event.data, 'csMessage');
-    //     };
-
-    //     ws.onclose = function (event) {
-    //         sessionStorage.removeItem('ws');
-    //     };
-    // }
-
-
-    
+                        chatBox.appendChild(pTag);
+                    });
+                    chatBox.scrollTop = chatBox.scrollHeight; // 滾動至底部
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching chat history:', error);
+            });
+    };
 
     var chatContainer = document.createElement('div');
     chatContainer.id = 'chat-container';
@@ -78,56 +88,24 @@ document.addEventListener('DOMContentLoaded', function() {
     chatContainer.style.height = '50px';
     //
 
-    console.log("dddddddddddENDddddddddddddddd:"+sessionStorage.getItem("ws"));
-
-    var member_data;
-
     // 發送訊息
     sendButton.onclick = async function () {
-        // alert('請先登入:'+sessionStorage.getItem("account"));
-        try {
-
-
-            accountData = {
-                id : sessionStorage.getItem("account")
-            };
-            // 發送 POST 請求到後端 API
-            const response = await fetch('http://localhost:8081/TIA103G3_Servlet/ChatMember', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(accountData) // {id : 1} 
-            });
-            
-            // 檢查是否登錄成功
-            if (response.status === 200) {
-                
-                member_data = await response.json();
-                console.log(member_data);
-
-            } else if(response.status === 401){
-                console.error('Fetch 錯誤:', error);
-                alert('連接伺服器失敗，請檢查網路連線或稍後再試。');
-            }
-            
-        } catch (error) {
-            console.error('Fetch 錯誤:', error);
-            alert('連接伺服器失敗，請檢查網路連線或稍後再試。');
-        }
 
         const messageContent = inputField.value.trim();
         if (messageContent !== '') {
             // 將訊息包裝為 JSON 格式
             var json_str = JSON.stringify({
+                id:JSON.parse(sessionStorage.getItem("ID")),
+                receiver : 500,
+                sender : "member",                  // member : 會員  / employ : 客服
                 content: messageContent,
                 timestamp: new Date().toISOString() // 可選，附帶時間戳
             });
-            const message = `${member_data.id}:${json_str}`;
+            
             
             try {
-                ws.send(message); // 發送 JSON 格式的訊息到 WebSocket 伺服器
-                displayMessage(messageContent, 'cus_Message'); // 顯示客戶端訊息
+                ws.send(json_str); // 發送 JSON 格式的訊息到 WebSocket 伺服器
+                displayMessage(messageContent, 'right-message'); // 顯示客戶端訊息
                 inputField.value = ''; // 清空輸入框
             } catch (error) {
                 console.error('無法發送訊息:', error);
@@ -164,27 +142,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
     chatHeader.onclick = function () {
-        console.log("id:"+sessionStorage.getItem("account"))
-        if (sessionStorage.getItem("account") == null){
+        console.log("id:"+sessionStorage.getItem("ID"))
+        if (sessionStorage.getItem("ID") == null){
             document.getElementById('login-popup').click();
             alert('請先登入');
         }else{
             var chatToggle = document.getElementById('chat-toggle');
 
             if(sessionStorage.getItem("ws") == null || sessionStorage.getItem("ws") == false){
-                ws = new WebSocket('ws://localhost:8081/TIA103G3_Servlet/ChatWS/'+sessionStorage.getItem("account")); // 替換為你的 WebSocket 伺服器端點
+                ws = new WebSocket('ws://localhost:8081/TIA103G3_Servlet/ChatWS/'+sessionStorage.getItem("ID")); // 替換為你的 WebSocket 伺服器端點
                 console.log("New WS");
                 sessionStorage.setItem("ws", true);
 
                 ws.onopen = function () {
-                    console.log("Connected to WebSocket");
+                    console.log("Connected to WebSocket");                  
+                    fetchChatById(sessionStorage.getItem("ID"));
                     // document.getElementById("status").innerText = "已連接";
                 };
         
                 // 接收來自伺服器的訊息
                 ws.onmessage = function (event) {
                     console.log("MSG:"+event.data);
-                    displayMessage(event.data, 'csMessage');
+                    // fetch chat/history to local 
+                    
+                    displayMessage(event.data, 'left-message');
                 };
         
                 ws.onclose = function (event) {
@@ -197,6 +178,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
 
             }
+            //心跳機制
+            // function startHeartbeat() {
+            //     setInterval(() => {
+            //         if (ws.readyState === WebSocket.OPEN) {
+            //             ws.send("ping"); // 發送心跳訊息
+            //         }
+            //     }, 10000); // 每 30 秒發送一次
+            // }
             
             if (chatContent.style.visibility === 'hidden') {
                 
