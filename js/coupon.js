@@ -1,9 +1,9 @@
 // 假設用戶 ID 存在於 sessionStorage
-const memb_id = sessionStorage.getItem('memb_id'); // 從 session 中獲取會員 ID
+const memb_id = sessionStorage.getItem('id'); // 從 session 中獲取會員 ID
 console.log("會員 ID:", memb_id);
 
 $.ajax({
-    url: `http://localhost:8081/TIA103G3_Servlet/getUserCoup?memberId=${memb_id}`, // 將 memberId 添加到 URL 中
+    url: `http://localhost:8081/TIA103G3_Servlet/CouponsOwned?memberId=${memb_id}`, // 將 memberId 添加到 URL 中
     method: 'GET', // 使用 GET 方法
     dataType: 'json', // 指定期望的數據格式
     success: function (coupons) {
@@ -15,11 +15,11 @@ $.ajax({
         const expiredCoupons = [];
 
         coupons.forEach(function (coupon) {
-            if (coupon.is_used === 0) {
+            if (coupon.coup_is_used === 0) {
                 usableCoupons.push(coupon);
-            } else if (coupon.is_used === 1) {
+            } else if (coupon.coup_is_used === 1) {
                 usedCoupons.push(coupon);
-            } else if (coupon.is_used === 2) {
+            } else if (coupon.coup_is_used === 2) {
                 expiredCoupons.push(coupon);
             }
         });
@@ -51,7 +51,7 @@ function displayCoupons(usable, used, expired) {
 
     // 顯示已使用的優惠券
     if (used.length > 0) {
-        $("#usedCoupons").html(used.map(coupon => `<div>${coupon.name} - 到期日: ${coupon.expiry_date}</div>`).join(''));
+        $("#usedCoupons").html(used.map(coupon => `<div>${coupon.name} - 到期日: ${coupon.coup_expiry_date}</div>`).join(''));
         $("#usedCoupons").show(); // 顯示已使用的區域
     } else {
         $("#usedCoupons").html('<p>目前沒有已使用的優惠券。</p>');

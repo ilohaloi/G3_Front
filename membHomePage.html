@@ -30,10 +30,14 @@
     </style>
     <!--自訂-->
     <link rel="stylesheet" href="css/member.css">
+    <!--聊天室-->
+    <link rel="stylesheet" href="./chat_front.css">
+
+
+
 </head>
 
 <body>
-
     <!--=====   Preloader  預先載入器 =============-->
     <div id="preloader-container"></div>
 
@@ -45,6 +49,7 @@
 
     <!--=======	Header Area ===============-->
     <div id="header"></div>
+
     <header class="th-header header-layout1">
         <div class="header-top">
             <div class="container th-container">
@@ -205,6 +210,8 @@
         </div>
 
     </header>
+
+
     <!--========= Breadcumb 麵包屑 ========== -->
     <div class="breadcumb-wrapper " data-bg-src="../assets/img/bg/breadcumb-bg.jpg">
         <div class="container">
@@ -217,18 +224,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/member/order/orderInfo">
-                            <span class="menuName">訂單查詢</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="./my-information.html">
                             <span class="menuName">資料修改</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/TIA103_Poject_Cruiseship_frontend/my-coupon.html">
-                            <span class="menuName">折扣查詢</span>
                         </a>
                     </li>
                 </ul>
@@ -237,55 +234,38 @@
     </div>
 
     <!--========= Team Area 團隊區 ============-->
-    <div class="team" style="display: none;">
-        <div class="container">
-            <div class="cupon">
-                <div class="flex flex-col justify-between bg-white rounded-soft h-[175px] w-[825px] pt-5 mb-[15px]">
-                    <div class="flex justify-between pl-[30px] pr-6">
-                        <div>
-                            <h2 class="font-bold mb-1.5 text-2xl text-gray-900">折扣碼登錄</h2>
-                            <p class="text-sm text-gray">使用折扣碼，幫你旅遊省荷包</p>
-                        </div>
-                        <div>
-                            <div class="flex pt-3">
-                                <div class="enter"><input id="claimDiscountCode" name="claimDiscountCode" type="text"
-                                        class="ez-input" placeholder="請輸入折扣碼" value="" /></div>
-                                <button type="button" class="ez-btn primary-lg" style="min-width:100px">領取</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pl-[30px] pr-6 border-t-2 pt-2">
-                        <div class="discount-tab">
-                            <ul class="ez-tab-content ez-tab-common-v1">
-                                <li class="active">
-                                    <span class="ez-tab-item" onclick="showCoupons('usable')">可使用</span>
-                                </li>
-                                <li>
-                                    <span class="ez-tab-item" onclick="showCoupons('used')">已使用</span>
-                                </li>
-                                <li>
-                                    <span class="ez-tab-item" onclick="showCoupons('expired')">已過期</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                <div id="usableCoupons" class="coupon-list"></div> <!-- 顯示可使用的優惠券 -->
-                <div id="usedCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已使用的優惠券 -->
-                <div id="expiredCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已過期的優惠券 -->
 
-                <!-- 當沒有優惠碼的情況 -->
-                <div class="no-coupons" style="display: none;">
-                    <img src="./assets/img/member/coupon.png" alt="No Coupons">
-                    <p>尚無折扣碼，來<a
-                            href="http://127.0.0.1:5501/TIA103_Poject_Cruiseship_frontend/index.html">首頁</a>看看有什麼優惠吧！
-                    </p>
-                    <a id="home" href="./index.html">回到首頁</a>
-                </div>
-            </div>
-        </div>
+    <div id="app">
+
+
+
+        <router-view></router-view>
     </div>
+    <script type="module">
+        import { homePage } from './js/membHomePage.js'
+        const routes = [
+            { path: '/', name: 'homepage', component: homePage },
+        ];
+
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(),
+            routes
+        })
+        const app = Vue.createApp({})
+        app.use(router)
+        app.mount('#app');
+
+        if (sessionStorage.getItem('id') == null) {
+            console.log(123);
+            document.getElementById("login-popup").style.display = "visible";
+            document.getElementById("logoutBtn").style.display = "none";
+        } else {
+            document.getElementById("login-popup").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "visible";
+        }
+
+    </script>
 
     <!--===  elements Area  ======-->
     <div class="elements-sec bg-white overflow-hidden">
@@ -294,12 +274,18 @@
         </div>
     </div>
 
-    <!--========= Footer Area 頁尾區 ===========-->
+    <!--Scroll To Top-- >
+
+
+            < !--========= Footer Area 頁尾區 =========== -->
     <div id="footer-wrapper"></div>
 
 
-    <!-- script 標籤 -->
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./chat_front.js"></script>
+
     <script>
         $('#preloader-container').load('./component/preloader.html', function () {
             // 當預加載器加載完成後顯示內容
@@ -313,20 +299,7 @@
         $('#header').load('./component/header.html');
 
         $('#footer-wrapper').load('./component/footer.html');
-
-
-        if (sessionStorage.getItem('id') == null) {
-            console.log(123);
-            document.getElementById("login-popup").style.display = "visible";
-            document.getElementById("logoutBtn").style.display = "none";
-        } else {
-            document.getElementById("login-popup").style.display = "none";
-            document.getElementById("logoutBtn").style.display = "visible";
-        }
-
     </script>
-
-    <script src="./js/coupon.js"></script>
 
 </body>
 

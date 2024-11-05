@@ -7567,9 +7567,12 @@ heding animation  end
   width: 100%;
 }
 
+
+
 .copyright-wrap {
   padding: 18px 0;
   background-color: #262A36;
+  position: relative; /* 确保位置不随页面移动 */
 }
 
 .copyright-wrap .copyright-text {
@@ -7583,6 +7586,14 @@ heding animation  end
 
 .copyright-wrap .copyright-text a:hover {
   color: var(--theme-color);
+}
+
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .copyright-wrap.bg-title .copyright-text a:hover {
@@ -7889,7 +7900,6 @@ heding animation  end
 
 .breadcumb-menu li:after {
   content: "";
-  background-image: url(../img/icon/arrow-right.svg);
   background-size: 100% 100%;
   top: 3px;
   width: 18px;
@@ -7905,6 +7915,11 @@ heding animation  end
   color: inherit;
   font-family: var(--icon-font);
 }
+.li-arrow::after{
+  background-image: url(../img/icon/arrow-right.svg);
+}
+
+
 
 .breadcumb-menu li:last-child {
   padding-right: 0;
@@ -20774,8 +20789,8 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .destination-box .destination-img img {
-  max-width: 423px;
-  max-height: 636px;
+  
+  max-height: 500px;
   width: 100%;
   object-fit: cover;
   border-radius: 24px;

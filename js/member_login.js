@@ -6,10 +6,10 @@
 
 document.getElementById('loginBtn').addEventListener('click', async function (e) {
     e.preventDefault(); // 阻止表單的默認提交行為
-    // 獲取電子信箱和密碼輸入框的值
+    
+    
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
-
 
     // 構造要發送到後端的資料
     const loginData = {
@@ -18,7 +18,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
     };
     try {
         // 發送 POST 請求到後端 API
-        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/getMember', {
+        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/MemberLogin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,10 +27,11 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
         });
         // 檢查是否登錄成功
         if (response.status === 200) {
+        
             const email = await response.json();
-            localStorage.setItem("ID", email.id);
-
-            window.location.replace('my-frontpage.html');
+            sessionStorage.setItem("id", email.id);
+            window.location.reload();
+            //window.location.replace("../destination.html#/checkout");
         
         } else if(response.status === 401){
             alert('登入失敗，請先註冊帳號');
@@ -42,6 +43,13 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
 });
 //------------------會員登入------------------//
 
+
+// 會員中心跳轉
+document.getElementById('memberHomePage').addEventListener('click', function (){
+    if (sessionStorage.getItem('id')) {
+        window.location.replace('../membHomePage.html');
+    }
+});
 
 
 // // 新增：顯示/隱藏密碼功能

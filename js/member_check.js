@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     
     // 從 localStorage 中取出會員 email和password
-    const userID = localStorage.getItem("ID");
+    const userID = sessionStorage.getItem("id");
     // const userPassword = localStorage.getItem("Password");
 
     if (userID) {

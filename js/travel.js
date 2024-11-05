@@ -1,28 +1,34 @@
 export const destination = {
     template:`
-        <section class="space">s
-            <div class="container">
-                <div class="row">
-                    <div class="col-xxl col-lg">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade active show" id="tab-grid" role="tabpanel"aria-labelledby="tab-destination-grid">
-                                <div class="row gy-30">
-                                    <div class="col-xxl-4 col-xl-3 col-sm-12">
-                                        <div class="tour-box th-ani">
-                                            <div class="tour-box_img global-img">
-                                                <img src="../assets/img/tour/北海道.jpg" alt="image">
-                                            </div>
-                                            <div v-for="(item, index) in route" :key="index" class="tour-content">
-                                                <h3 class="box-title"><a href="#">{{item.name}}</a></h3>
-                                                <h4 class="tour-box_price"><span class="currency">$ {{item.price}}</span> /人</h4>
-                                                <div class="tour-action">
-                                                    <span><i class="fa-light fa-clock"></i>{{item.days}}天</span>
-                                                    <a href="#" @click="openDetail(item)" class="th-btn style4 th-icon">瀏覽行程</a>
-                                                    <router-link to="/checkout" @click="process(item)">
-                                                        <a href="#" class="th-btn style4 th-icon">訂購行程</a>
-                                                    </router-link>
+
+        <div v-if="isProdEmpty" class="d-flex justify-content-center align-items-center space-top">
+                <blockquote><h2>目前航班已賣完。</h2></blockquote>
+        </div>
+        <div v-else>
+            <section class="space">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxl col-lg">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade active show" id="tab-grid" role="tabpanel" aria-labelledby="tab-destination-grid">
+                                    <div class="row gy-30">
+                                        <div class="col-lg-4" v-for="(item, index) in route" :key="index">
+                                            <div class="tour-box th-ani">
+                                                <div class="tour-box_img global-img">
+                                                    <img :src="item.image" alt="image">
                                                 </div>
-                                            </div>  
+                                                <div class="tour-content">
+                                                    <h3 class="box-title"><a href="#">{{item.name}}</a></h3>
+                                                    <h4 class="tour-box_price"><span class="currency">$ {{item.price}}</span> /人</h4>
+                                                    <div class="tour-action">
+                                                        <span><i class="fa-light fa-clock"></i>{{item.days}}天</span>
+                                                        <a href="#" @click="openDetail(item)" class="th-btn style4 th-icon">瀏覽行程</a>
+                                                        <router-link to="/checkout" @click="process(item)">
+                                                            <a href="#" class="th-btn style4 th-icon">訂購行程</a>
+                                                        </router-link>
+                                                    </div>
+                                                </div>  
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -30,8 +36,8 @@ export const destination = {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     `,
     data() {
         return {
@@ -53,9 +59,15 @@ export const destination = {
             );
         },
         process(item) {
-            sessionStorage.setItem('travel', JSON.stringify({ name: item.name, prive:item.price,days:item.days}));
+            sessionStorage.setItem('travel', JSON.stringify({ name: item.name, prive:item.price,days:item.days,image:item.image}));
         }
-    }  ,
+    },
+    computed: {
+        isProdEmpty() {
+    
+            return this.route.length === 0;
+        }
+    },
     async mounted() {
         try {
             const response = await fetch('http://localhost:8081/TIA103G3_Servlet/route', {
@@ -64,6 +76,8 @@ export const destination = {
             })
         if (response.status === 200) { 
             this.route = await response.json();
+            console.log(this.route);
+            
         }
         } catch (error) { 
             console.log('Error',error);
@@ -79,13 +93,12 @@ export const checkout = {
             </div>
             <div class="row">
                 <div class="col-12">
-                    <form action="#" class="woocommerce-form-coupon">
+                    <form class="woocommerce-form-coupon">
                         <div class="form-group">
                             <label>優惠券密碼</label>
-                            <input type="text" class="form-control" v-model="travel.coupon">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="th-btn">使用</button>
+                            <select class="name" v-model="order.coup_no">
+                                <option v-for="(item, index) in coupon" :key="index" :value="item.coup_no">{{item.coup_no}}</option>
+                            </select>
                         </div>
                     </form>
                 </div>
@@ -98,25 +111,25 @@ export const checkout = {
                 <table class="cart_table mb-20">
                     <thead>
                         <tr>
-                            <th class="">圖片</th>
-                            <th class="">航線名稱</th>
-                            <th class="">天數</th>
-                            <th class="">總價</th>
+                            <th class="cart-col-image">圖片</th>
+                            <th class="cart-col-productname">航線名稱</th>
+                            <th class="cart-col-price">天數</th>
+                            <th class="cart-col-total">總價</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="cart_item">
-                            <td>
-                                <img width="91" height="91" src="assets/img/product/product_1_1.png" alt="Image"></a>
+                            <td data-title="Product">
+                                <img :src="travel.image" alt="Image" style="height: 91px; width: 120px; object-fit: cover;">
                             </td>
-                            <td>
+                            <td data-title="Name">
                                 <p>{{travel.name}}</p>
                             </td>
-                            <td>
-                                <span class="">{{travel.days}}天</span>
+                            <td data-title="Price">
+                                <span class="amount">{{travel.days}}天</span>
                             </td>
-                            <td>
-                                <span class=""><bdi><span>$</span>{{travel.prive}}</bdi></span>
+                            <td data-title="Quantity">
+                                <span class="product-quantity"><bdi><span>$</span>{{travel.prive}}</bdi></span>
                             </td>
                         </tr>
                     </tbody>
@@ -146,7 +159,7 @@ export const checkout = {
                     </div>
                     <div class="col-lg-6 form-group has-label">
                         <label for="roomType">房間類型:</label>
-                        <select v-model="order.roomType" required>
+                        <select v-model="order.room_type" required>
                             <option value="">-- 請選擇 --</option>
                             <option value="單人房">單人房</option>
                             <option value="雙人房">雙人房</option>
@@ -154,7 +167,7 @@ export const checkout = {
                     </div>
                     <div class="col-lg-6 form-group has-label">
                         <label for="roomType">房間數量</label>
-                        <input type="number" v-model="order.room" min="0" max="99">
+                        <input type="number" v-model="order.room_amount" min="0" max="99">
                     </div>
                 </div>
             </div>
@@ -166,7 +179,7 @@ export const checkout = {
                             <label for="payment_method_cod">Credit Cart</label>
                         </li>
                     </ul>
-                    <div class="form-row place-order" style=" margin-left: 40px;">
+                    <div class="form-row place-order" style="margin-left: 40px;">
                         <button @click="submit" class="th-btn">下訂</button>
                     </div>
                 </div>
@@ -185,14 +198,15 @@ export const checkout = {
                 phone: "0123456789"
             },
             order: {
-                membid: 0,
-                ship: 1,
-                coupon: "",
-                status: "未付款",
-                roomType:"",
-                room: 0,
-                amount:0
+                memb_id: 1,
+                ship_id: 1,
+                coup_no: 0,
+                trav_orde_status: "未付款",
+                room_type:"",
+                room_amount: 0,
+                trave_orde_amount:0
             },
+            coupon:[],
             travel: {
                 
             }
@@ -201,8 +215,27 @@ export const checkout = {
     },
     methods: {
         async submit() {
-            //TODO 
+            //TODO
+            if (!sessionStorage.getItem('id')) {
+                const radio = document.getElementById('login-popup');
+                if (radio) {
+                    radio.click();
+                    return;
+                }
+            }
+            
+
             try {
+                const response = await fetch('http://localhost:8081/TIA103G3_Servlet/inserttravel_orderfetchservlet', {
+                    method: "POST",
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(this.order)
+                })
+                if (response.status === 200)
+                    this.$router.push('/order');
+
 
             } catch (error) {
                 
@@ -210,6 +243,21 @@ export const checkout = {
         }
     },
     async mounted() { 
+
+        try {
+            const response = await fetch(`http://localhost:8081/TIA103G3_Servlet/CouponsOwned?memberId=${1}&isUsed=0`, {
+                method: 'GET',
+                mode: 'cors',
+            })
+        if (response.status === 200) { 
+            this.coupon = await response.json();
+            console.log(this.coupon);
+            
+        }
+        } catch (error) { 
+            console.log('Error',error);
+        }
+
         this.travel = await JSON.parse(sessionStorage.getItem('travel'));
         console.log(this.travel);
         
@@ -217,13 +265,14 @@ export const checkout = {
 }
 export const order = {
     template:`
-    <section class="space">
+    
+    <div class="space">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="th-account-form">
                         <h2>報名成功！</h2>
-                        <p>感謝您提交報名資料，我們已收到您的申請。以下是您的報名資訊：</p>
+                        <p>感謝您提交報名資料，我們已收到您的申請。</p>
                         <p>感謝您的報名，我們期待與您展開愉快的航程！</p>
                         <a href="index.html">
                             <button class="th-btn">返回首頁</button>
@@ -232,6 +281,7 @@ export const order = {
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     `,
+    
 }
