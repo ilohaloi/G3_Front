@@ -30,7 +30,7 @@
             <div class="breadcumb-content">
                 <h1 class="breadcumb-title">隱私權保護政策及個資聲明</h1>
                 <ul class="breadcumb-menu">
-                    <li><a href="home-travel.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li>隱私權保護政策及個資聲明</li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
     </div>
     <!--======  Team Area    ===================-->
     <div class="team" style="display: none;">
-        <h1>隱私權政策</h1>
+        <h1 class="space-top">隱私權政策</h1>
         <p><strong>生效日期：</strong>2024/11/11
         <p>
 
@@ -131,6 +131,16 @@
         $('#header').load('./component/header.html');
 
         $('#footer-wrapper').load('./component/footer.html');
+
+        if (sessionStorage.getItem('id') == null) {
+            console.log(123);
+            document.getElementById("login-popup").style.display = "visible";
+            document.getElementById("logoutBtn").style.display = "none";
+        } else {
+            document.getElementById("login-popup").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "visible";
+        }
+
     </script>
 
 </body>

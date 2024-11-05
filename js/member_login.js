@@ -52,7 +52,6 @@ document.getElementById('memberHomePage').addEventListener('click', function (){
 });
 
 
-
 // // 新增：顯示/隱藏密碼功能
 // function togglePassword(inputId) {
 //     const input = document.getElementById(inputId);

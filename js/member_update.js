@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 從表單中取得輸入的資料
         const updatedMemberData = {
-            id: localStorage.getItem('ID'), 
+            id: sessionStorage.getItem('id'),
             name: document.getElementById('username').value,
             tell: document.getElementById('check_tell').value,
             address: document.getElementById('check_address').value,
@@ -90,3 +90,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 //----------------會員資料修改----------------//
+// document.addEventListener('DOMContentLoaded', function(){ 
+    
+//     document.getElementById('member_update_submit').addEventListener('click', function (event) {
+//         event.preventDefault();
+//         const name = document.getElementById('username').value;
+//         const addr = document.getElementById('check_address').value;
+//         const birth = document.getElementById('check_birthday').value;
+//         const password = document.getElementById('check_password').value;
+//         const checkpassword = document.getElementById('check_password_confirm').value;
+
+//         if (password != null) { 
+
+//             if (password !== checkpassword) { 
+//                 alert('新確認密碼與新密碼不一樣');
+//                 return;
+//             }
+
+//         }
+//         const jsonData = JSON.stringify({
+//             id: sessionStorage.getItem('id'),
+            
+//             })
+    
+
+
+
+//     });
+// })
+
+
