@@ -2,16 +2,23 @@
 <html class="no-js" lang="zxx">
 
 <head>
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Fontawesome Icon 令人驚嘆的圖標-->
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <!-- Magnific Popup 華麗的彈出窗口 -->
+    <link rel="stylesheet" href="../assets/css/magnific-popup.min.css">
+
+    <!-- Swiper css 滑動器-->
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
 
 </head>
 
 <body>
-    <div class="magic-cursor relative z-10">
-        <div class="cursor"></div>
-        <div class="cursor-follower"></div>
-    </div>
     <!--=====   Preloader  預先載入器 =============-->
     <div id="preloader-container"></div>
 
@@ -24,14 +31,179 @@
     <!--=======	Header Area ===============-->
     <div id="header"></div>
 
+
+    <header class="th-header header-layout1">
+        <div class="header-top">
+            <div class="container th-container">
+                <div class="row justify-content-center justify-content-xl-between align-items-center">
+                    <div class="col-auto d-none d-md-block">
+                        <div class="header-links">
+                            <ul>
+                                <li class="d-none d-xl-inline-block"><i
+                                        class="fa-sharp fa-regular  fa-location-dot"></i>
+                                    <span>台北市中山區南京東路三段</span>
+                                </li>
+                                <li class="d-none d-xl-inline-block"><i class="fa-regular fa-clock"></i>
+                                    <span>星期一 到 五 早上 8.00 - 7.00 下午</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="header-right">
+                            <div class="header-links">
+                                <ul>
+                                    <li id="memberHomePage" class="d-none d-md-inline-block"><a href="#">會員中心</a>
+                                    </li>
+
+                                    <a href="../index.html" id="logoutBtn">
+                                        登出
+                                        <i class="fa-regular fa-user"></i>
+                                    </a>
+
+                                    <li>
+                                        <a href="#login-form" id="login-popup" class="popup-content">登入/註冊<i
+                                                class="fa-regular fa-user"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sticky-wrapper">
+            <!-- Main Menu Area -->
+            <div class="menu-area">
+                <div class="container th-container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <div class="header-logo">
+                                <a href="../index.html"><img src="../assets/img/logo.svg" alt="Tourm"></a>
+                            </div>
+                        </div>
+                        <div class="col-auto me-xl-auto">
+                            <nav class="main-menu d-none d-xl-inline-block">
+                                <ul>
+                                    <li><a href="../index.html">首頁</a></li>
+                                    <li><a href="../destination.html">行程</a></li>
+                                    <li><a href="../shop.html">商城</a></li>
+                                    <li><a href="../faq.html">問與答</a></li>
+
+                                </ul>
+                            </nav>
+                            <button type="button" class="th-menu-toggle d-block d-xl-none"><i
+                                    class="far fa-bars"></i></button>
+                        </div>
+                        <div class="col-auto d-none d-xl-block">
+
+                            <div class="header-button">
+                                <a href="./destination.html" class="th-btn style3 th-icon">立刻預定</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-bg" data-mask-src="../assets/img/logo_bg_mask.png"></div>
+            </div>
+        </div>
+
+
+        <div id="login-form" class="popup-login-register mfp-hide">
+            <!-- 登入/註冊 大標籤 -->
+            <ul class="nav" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">登入</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-menu active" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">註冊</button>
+                </li>
+            </ul>
+
+            <!-- 登入/註冊 輸入框 -->
+            <div class="tab-content" id="pills-tabContent">
+                <!-- 登入表單 -->
+                <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="th-login-form">
+                        <form action="/MemberLogin" method="POST" class="login-form ajax-contact">
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label>電子信箱</label>
+                                    <input type="email" class="form-control" name="login_email" id="login_email"
+                                        required="required">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label>密碼</label>
+                                    <input type="password" class="form-control" name="login_password"
+                                        id="login_password" required="required">
+                                </div>
+                                <!-- <a href="/auth/google">使用 Google 登入</a> -->
+
+                                <div class="form-btn mb-20 col-12">
+                                    <button id="loginBtn" type="submit" class="th-btn btn-fw th-radius2">登入</button>
+                                </div>
+                            </div>
+                            <div id="forgot_url">
+                                <a href="my-account.html">忘記密碼</a>
+                            </div>
+                            <p class="form-messages mb-0 mt-3"></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+                    aria-labelledby="pills-profile-tab">
+                    <form class="login-form ajax-contact" id="registerForm">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="name">姓名*</label>
+                                <input type="text" class="form-control" name="register_name" id="register_name"
+                                    required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label>電子信箱*</label>
+                                <input type="email" class="form-control" name="register_email" id="register_email"
+                                    required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="password">密碼*</label>
+                                <input type="password" class="form-control" name="register_password"
+                                    id="register_password" required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="password_confirm" style="color: red;">再次輸入密碼*</label>
+                                <input type="password" class="form-control" name="password_confirm"
+                                    id="password_confirm" required="required" style="border-color: red;">
+                                <!-- 修改 ID 屬性，原本為 password_comfirm -->
+                            </div>
+                            <div class="form-btn mt-20 col-12">
+                                <button id="registerBtn" type="button" class="th-btn btn-fw th-radius2">註冊</button>
+                            </div>
+                        </div>
+                        <p class="form-messages mb-0 mt-3"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
     <!--========= Breadcumb 麵包屑 ========== -->
-    <div class="breadcumb-wrapper " data-bg-src="assets/img/bg/breadcumb-bg.jpg" style="display: none;">
+    <div class="breadcumb-wrapper " data-bg-src="./assets/img/bg/breadcumb-bg.jpg">
         <div class="container">
             <div class="breadcumb-content">
-                <h1 class="breadcumb-title">My account</h1>
-                <ul class="breadcumb-menu">
-                    <li><a href="home-travel.html">Home</a></li>
-                    <li>My account</li>
+                <h1 class="breadcumb-title">忘記密碼</h1>
+                <ul class='breadcumb-menu'>
+                    <li>
+                        <a href="./index.html">
+                            <span class=>首頁</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,9 +243,10 @@
                             <div class="row">
                                 <div class="form-group col-12">
                                     <label>請輸入您的帳號，將郵寄新的密碼至您的電子信箱</label>
-                                    <input type="email" class="form-control" name="resetPW_email" id="resetPW_email" placeholder="">
+                                    <input type="email" class="form-control" name="resetPW_email" id="resetPW_email"
+                                        placeholder="">
                                 </div>
-    
+
                                 <div class="form-btn col-12">
                                     <button type="submit" class="th-btn btn-fw th-radius2">取得新密碼</button>
                                 </div>
@@ -86,28 +259,44 @@
         </div>
     </section>
 
+    <!--===  elements Area  ======-->
+    <div class="elements-sec bg-white overflow-hidden">
+        <div class="container-fluid">
+            <div class="tags-container relative"></div>
+        </div>
+    </div>
+
     <!--========= Footer Area 頁尾區 ===========-->
     <div id="footer-wrapper"></div>
 
 
 
-    <!-- script 標籤 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="">
+    <script src="./assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script>
         $('#preloader-container').load('./component/preloader.html', function () {
             // 當預加載器加載完成後顯示內容
-            $('.breadcumb-wrapper').show(); // 顯示隱藏的內容
             $('.space').show(); // 顯示隱藏的內容
         });
         $('#mobile-menu').load('./component/mobile_menu.html');
 
-        $('#sidemenu').load('./component/sidemenu.html');
-
         $('#header').load('./component/header.html');
 
         $('#footer-wrapper').load('./component/footer.html');
+
+
+        if (sessionStorage.getItem('id') == null) {
+            console.log(123);
+            document.getElementById("login-popup").style.display = "visible";
+            document.getElementById("logoutBtn").style.display = "none";
+        } else {
+            document.getElementById("login-popup").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "visible";
+        }
+
     </script>
-    <script src="./js/member_forgetPassword.js"></script>
+
+    <script src="./js/member_check.js"></script>
+    <script src="./js/member_update.js"></script>
 </body>
 
 </html>

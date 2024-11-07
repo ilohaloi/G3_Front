@@ -78,10 +78,10 @@
                                 <ul>
                                     <li class="d-none d-xl-inline-block"><i
                                             class="fa-sharp fa-regular  fa-location-dot"></i>
-                                        <span>45 New Eskaton Road, Austria</span>
+                                        <span>台北市中山區南京東路三段</span>
                                     </li>
                                     <li class="d-none d-xl-inline-block"><i class="fa-regular fa-clock"></i>
-                                        <span>Sun to Friday: 8.00 am - 7.00 pm</span>
+                                        <span>星期一 到 五 早上 8.00 - 7.00 下午</span>
                                     </li>
                                 </ul>
                             </div>
@@ -138,7 +138,7 @@
                             <div class="col-auto d-none d-xl-block">
 
                                 <div class="header-button">
-                                    <a href="../index.html#booking" class="th-btn style3 th-icon">Book Now</a>
+                                    <a href="./destination.html" class="th-btn style3 th-icon">立刻預定</a>
                                 </div>
 
                             </div>
@@ -260,53 +260,12 @@
 
         <div id="booking"></div>
         <div class="booking-sec">
-            <div class="container">
-                <div class="booking-form ajax-contact">
-                    <div class="input-wrap">
-                        <!-- 動態家仔 -->
-                        <div class="row align-items-center justify-content-between">
-                            <div class="form-group col-md-6 col-lg">
-                                <div class="icon">
-                                    <i class="fa-light fa-clock"></i>
-                                </div>
-                                <div class="search-input">
-                                    <label>天數</label>
-                                    <select class="form-select nice-select" name="Duration" id="Duration">
-                                        <option value="Normal" selected disabled>Duration</option>
-                                        <option :value="item" v-for="(item,index) in days" :key="index">{{item}} days
-                                        </option>
 
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-6 col-lg">
-                                <div class="icon">
-                                    <i class="fa-light fa-map-location-dot"></i>
-                                </div>
-                                <div class="search-input">
-                                    <label>航線</label>
-                                    <select name="subject" id="category" class="form-select nice-select">
-                                        <option value="Normal" selected disabled>Luxury</option>
-                                        <option value="1">Delux</option>
-                                        <option value="2">Economy</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-btn col-md-12 col-lg-auto">
-                                <button class="th-btn"><img src="assets/img/icon/search.svg" alt="">Search</button>
-                            </div>
-                        </div>
-                        <p class="form-messages mb-0 mt-3"></p>
-                    </div>
-                    </ㄛ>
-                </div>
-            </div>
 
             <div class="destination-area position-relative overflow-hidden ">
                 <div class="container">
                     <div class="title-area text-center">
-                        <h2 class="sec-title">Destination</h2>
+                        <h2 class="sec-title">航線</h2>
                     </div>
 
                     <div class="swiper th-slider destination-slider" id="aboutSlider1" data-slider-options='{
@@ -318,7 +277,7 @@
                         "shadowScale": 0.94
                     }
                 }'>
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper space-bottom">
                             <div class="swiper-slide" v-for="(item,index) in slidePost" :key="index">
                                 <div class="destination-box gsap-cursor">
                                     <div class="destination-img">

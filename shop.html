@@ -52,10 +52,10 @@
                             <ul>
                                 <li class="d-none d-xl-inline-block"><i
                                         class="fa-sharp fa-regular  fa-location-dot"></i>
-                                    <span>45 New Eskaton Road, Austria</span>
+                                    <span>台北市中山區南京東路三段</span>
                                 </li>
                                 <li class="d-none d-xl-inline-block"><i class="fa-regular fa-clock"></i>
-                                    <span>Sun to Friday: 8.00 am - 7.00 pm</span>
+                                    <span>星期一 到 五 早上 8.00 - 7.00 下午</span>
                                 </li>
                             </ul>
                         </div>
@@ -111,7 +111,7 @@
                         <div class="col-auto d-none d-xl-block">
 
                             <div class="header-button">
-                                <a href="../index.html#booking" class="th-btn style3 th-icon">Book Now</a>
+                                <a href="./destination.html" class="th-btn style3 th-icon">立刻預定</a>
                             </div>
 
                         </div>
@@ -227,10 +227,11 @@
             <div class="breadcumb-wrapper " style="background-image:url(assets/img/bg/breadcumb-bg.jpg)">
                 <div class="container">
                     <div class="breadcumb-content">
-                        <h1 class="breadcumb-title">Shops</h1>
+                        <h1 class="breadcumb-title">商店</h1>
                         <ul class="breadcumb-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Shops</li>
+                            <li><a href="index.html">首頁</a></li>
+                            <li><a href="#/">商店首頁</a></li>
+                            <li><a href="#/cart">購物車</a></li>
                         </ul>
                     </div>
                 </div>
@@ -249,7 +250,7 @@
                                         <div v-for="(item, index) in prod" :key="index" class="col-xl-3 col-sm-6">
                                             <div class="th-product product-grid">
                                                 <div class="product-img">
-                                                    <img :src="item.img1" alt="Product Image">
+                                                    <div class="img"><img :src="item.img1" alt="Product Image" style="width: 400px; height: 200px;"></div>
                                                     <div class="actions">
                                                         <router-link :to="{ name: 'prod_detail', params: { id: item.id } }">
                                                             <div class="icon-btn popup-content"><i class="far fa-eye"></i></div>
@@ -304,11 +305,11 @@
             <div class="breadcumb-wrapper " style="background-image:url(assets/img/bg/breadcumb-bg.jpg)">
                 <div class="container">
                     <div class="breadcumb-content">
-                        <h1 class="breadcumb-title">Product</h1>
+                        <h1 class="breadcumb-title">商品</h1>
                         <ul class="breadcumb-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><router-link to="/">Shops</router-link></li>
-                            <li>Product</li>
+                            <li><a href="index.html">首頁</a></li>
+                            <li><a href="#/">商店首頁</a></li>
+                              <li><a href="#/cart">購物車</a></li>
                         </ul>
                     </div>
                 </div>
@@ -318,7 +319,7 @@
                     <div class="row gx-60">
                         <div class="col-lg-6">
                             <div class="product-big-img">
-                                <div class="img"><img :src="prod.imgs[0]" alt="Product Image"></div>
+                                <div class="img"><img :src="prod.imgs[0]" alt="Product Image" style="width: 400px; height: 200px;"></div>
                             </div>
                         </div>
                         <div class="col-lg-6 align-self-center">
@@ -378,11 +379,11 @@
             <div class="breadcumb-wrapper " style="background-image:url(assets/img/bg/breadcumb-bg.jpg)">
                 <div class="container">
                     <div class="breadcumb-content">
-                        <h1 class="breadcumb-title">Cart</h1>
+                        <h1 class="breadcumb-title">購物車</h1>
                         <ul class="breadcumb-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><router-link to="/">Shops</router-link></li>
-                            <li>Cart</li>
+                            <li><a href="index.html">首頁</a></li>
+                            <li><a href="#/">商店首頁</a></li>
+                            <li><a href="#/cart">購物車</a></li>
                         </ul>
                     </div>
                 </div>
@@ -391,7 +392,7 @@
             <div class="th-cart-wrapper" style="padding-top:40px">
                 <div class="container">
                     <div class="woocommerce-notices-wrapper">
-                        <div class="woocommerce-message">Shipping costs updated.</div>
+                        <div class="woocommerce-message">購物車</div>
                     </div>
                     <form class="woocommerce-cart-form">
                         <table class="cart_table">
@@ -409,7 +410,7 @@
                                 <tr class="cart item" v-for="(item,index) in cart" :key="index">
                                     <td data-title="Product">
                                         <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
-                                            <img width="91" height="91" :src="item.imgs" alt="Image">
+                                            <img  :src="item.imgs[0]" alt="Image" width="50" height="50">
                                         </router-link>
                                     </td>
                                         <td data-title="Name">
@@ -437,7 +438,7 @@
                                 <tr>
                                     <td colspan="6" class="actions">
                                         <router-link to="/">
-                                            <div class="th-btn">Continue Shopping</div>
+                                            <div class="th-btn">繼續購物</div>
                                         </router-link>
                                     </td>
                                 </tr>
@@ -447,11 +448,11 @@
 
                     <div class="row justify-content-end">
                         <div class="col-md-8 col-lg-7 col-xl-6">
-                            <h2 class="h4 summary-title">Cart Totals</h2>
+                            <h2 class="h4 summary-title">價格</h2>
                             <table class="cart_totals">
                                 <tfoot>
                                     <tr class="order-total">
-                                        <td>Order Total</td>
+                                        <td>訂單總金額</td>
                                         <td data-title="Total">
                                             <strong><span class="amount"><bdi><span>$</span>{{total}}</bdi></span></strong>
                                         </td>
@@ -462,7 +463,7 @@
                             <div class="wc-proceed-to-checkout mb-30">
                                 <router-link to="" @click="proceedToCheckout()">
                                     <div class="th-btn">
-                                        Proceed to checkout
+                                        結帳
                                     </div>
                                 </router-link>
                             </div>
@@ -494,7 +495,13 @@
                     this.total = totalUpdate(this.cart);
                 },
                 proceedToCheckout() {
-
+                    if (sessionStorage.getItem('id') == null) {
+                        const radio = document.getElementById('login-popup');
+                        if (radio) {
+                            radio.click();
+                            return;
+                        }
+                    }
 
                     if (!lodash.isEmpty(localStorage.getItem('cart'))) {
                         localStorage.setItem('cart', JSON.stringify(this.cart));
@@ -516,11 +523,11 @@
             <div class="breadcumb-wrapper " style="background-image:url(assets/img/bg/breadcumb-bg.jpg)">
                 <div class="container">
                     <div class="breadcumb-content">
-                        <h1 class="breadcumb-title">Checkout</h1>
+                        <h1 class="breadcumb-title">結帳</h1>
                         <ul class="breadcumb-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><router-link to="/">Shops</router-link></li>
-                            <li>checkout</li>
+                            <li><a href="index.html">首頁</a></li>
+                            <li><a href="#/">商店首頁</a></li>
+                            <li><a href="#/cart">購物車</a></li>
                         </ul>
                     </div>
                 </div>
@@ -563,19 +570,19 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group has-label">
                                             <label>姓名</label>
-                                            <input type="text" class="form-control" v-model="cust.name" placeholder="姓名" >
+                                            <input type="text" class="form-control" v-model="cust.name" placeholder="輸入姓名" >
                                         </div>
                                         <div class="col-md-6 form-group has-label">
                                             <label>住址</label>
-                                            <input type="text" class="form-control" v-model="cust.shipaddr" placeholder="收件地址">
+                                            <input type="text" class="form-control" v-model="cust.shipaddr" placeholder="輸入收件地址">
                                         </div>
                                         <div class="col-md-6 form-group has-label">
                                             <label>信箱</label>
-                                            <input type="email" class="form-control" v-model="cust.email" placeholder="Email">
+                                            <input type="email" class="form-control" v-model="cust.email" placeholder="輸入Email">
                                         </div>
                                         <div class="col-md-6 form-group has-label">
                                             <label>電話</label>
-                                            <input type="text" class="form-control" v-model="cust.phone" placeholder="電話">
+                                            <input type="text" class="form-control" v-model="cust.phone" placeholder="輸入電話">
                                         </div>
                                     </div>
                                 </div>
@@ -598,7 +605,7 @@
                                 <tr class="cart item" v-for="(item,index) in cart" :key="index">
                                     <td data-title="Product">
                                         <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
-                                            <img width="91" height="91" :src="item.imgs" alt="Image">
+                                            <img width="50" height="91" :src="item.imgs[0]" alt="Image">
                                         </router-link>
                                     </td>
                                     <td data-title="Name">
@@ -645,17 +652,17 @@
             data() {
                 return {
                     memb: {
-                        id: 1,
-                        name: "測試",
-                        shipaddr: "123",
-                        email: "google",
-                        phone: "0123456789"
+                        id: "",
+                        name: "",
+                        shipaddr: "",
+                        email: "",
+                        phone: ""
                     },
                     cust: {
-                        name: "非會員",
-                        shipaddr: "非會員",
-                        email: "kiki77",
-                        phone: "0979"
+                        name: "",
+                        shipaddr: "",
+                        email: "",
+                        phone: ""
                     },
                     payment: "credit",
                     paymentcheck: false,
@@ -673,8 +680,8 @@
                     this.cust.email = "";
                     this.cust.phone = "";
                 },
-                order(event) {
-
+                async order(event) {
+                    let resp;
                     if (!this.checked) {
                         const orderData = {
                             status: "未付款",
@@ -685,7 +692,8 @@
                             addr: this.cust.shipaddr,
                             amount: this.total,
                         };
-                        insertOrder(orderData);
+
+                        resp = await insertOrder(orderData);
                     }
                     else {
                         const orderData = {
@@ -698,14 +706,39 @@
                             addr: this.memb.shipaddr,
                             amount: this.total,
                         };
-                        insertOrder(orderData);
+                        resp = await insertOrder(orderData);
+                    }
+                    if (resp == true) {
+                        window.accessControl.canAccessCheckout = true;
+                        this.$router.push('/ordercomplete');
                     }
                 }
             },
-            mounted() {
+            async mounted() {
                 this.cart = JSON.parse(localStorage.getItem("cart"));
                 this.total = totalUpdate(this.cart);
                 window.accessControl.canAccessCheckout = false;
+
+                try {
+                    const respon = await fetch('http://localhost:8081/TIA103G3_Servlet/getOneMember', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: sessionStorage.getItem('id') })
+                    })
+                    if (respon.status === 200) {
+                        const member = await respon.json();
+                        console.log(member);
+                        this.memb.id = member.id;
+                        this.memb.name = member.name;
+                        this.memb.shipaddr = member.address;
+                        this.memb.phone = member.tell;
+                        this.memb.email = member.email;
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
             },
 
         }
@@ -716,13 +749,29 @@
                     <div class="breadcumb-content">
                         <h1 class="breadcumb-title">Checkout</h1>
                         <ul class="breadcumb-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><router-link to="/">Shops</router-link></li>
-                            <li>checkout</li>
+                            <li><a href="index.html">首頁</a></li>
+                            <li><a href="#/">商店首頁</a></li>
+                            <li><a href="#/cart">購物車</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <div class="space">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="th-account-form">
+                                <h2>訂購成功！</h2>
+                                <a href="index.html">
+                                    <button class="th-btn">返回首頁</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             `
         }
         const routes = [

@@ -107,7 +107,7 @@ export const homePage = {
                 this.order = await respOrder.json();
                 console.log(this.order);
             }
-            const respCoupon = await fetch(`http://localhost:8081/TIA103G3_Servlet/CouponsOwned?${memberId}`, {
+            const respCoupon = await fetch(`http://localhost:8081/TIA103G3_Servlet/CouponsOwned?action=member&${memberId}`, {
                 method: "GET",
                 mode:"cors"
             })
