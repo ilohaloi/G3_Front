@@ -2,7 +2,7 @@ export const destination = {
     template:`
 
         <div v-if="isProdEmpty" class="d-flex justify-content-center align-items-center space-top">
-                <blockquote><h2>目前航班已賣完。</h2></blockquote>
+                <blockquote><h2>目前暫無航班。</h2></blockquote>
         </div>
         <div v-else>
             <section class="space">

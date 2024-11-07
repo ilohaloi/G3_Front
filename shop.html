@@ -710,6 +710,7 @@
                     }
                     if (resp == true) {
                         window.accessControl.canAccessCheckout = true;
+                        localStorage.removeItem('cart');
                         this.$router.push('/ordercomplete');
                     }
                 }
