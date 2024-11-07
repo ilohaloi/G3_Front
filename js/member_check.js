@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     
-    // 從 localStorage 中取出會員 email和password
-    const userID = localStorage.getItem("ID");
+    // 從 sessionStorage 中取出會員 email和password
+    const userID = sessionStorage.getItem("id");
     // const userPassword = localStorage.getItem("Password");
 
     if (userID) {
@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // 在這裡處理獲得的會員資料，並將它們填入對應的表單欄位中
 
             console.log(data);
-            
+
             document.getElementById('username').value = data.name !== null ? data.name : '';
             document.getElementById('check_tell').value = data.tell !== null ? data.tell : '';
             document.getElementById('check_address').value = data.address !== null ? data.address : '';
             document.getElementById('check_birthday').value = data.birthday !== null ? data.birthday : '';
-            
+            sessionStorage.setItem('password',data.password);
         })
         .catch(error => {
             console.error('無法取得會員資料');
