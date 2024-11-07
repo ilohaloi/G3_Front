@@ -294,6 +294,8 @@
             async mounted() {
                 try {
                     this.prod = await getProducts();
+                    console.log(this.prod);
+
                 } catch (error) {
                     console.log(error);
                 }
@@ -410,7 +412,7 @@
                                 <tr class="cart item" v-for="(item,index) in cart" :key="index">
                                     <td data-title="Product">
                                         <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
-                                            <img  :src="item.imgs[0]" alt="Image" width="50" height="50">
+                                            <img  :src="item.imgs" alt="Image" width="50" height="50">
                                         </router-link>
                                     </td>
                                         <td data-title="Name">
@@ -684,6 +686,7 @@
                     let resp;
                     if (!this.checked) {
                         const orderData = {
+                            membId: this.memb.id,
                             status: "未付款",
                             payment: this.payment,
                             name: this.cust.name,
