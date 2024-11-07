@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     
-    // 從 sessionStorage 中取出會員 email和password
     const userID = sessionStorage.getItem("id");
     // const userPassword = localStorage.getItem("Password");
 

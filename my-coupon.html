@@ -2,17 +2,38 @@
 <html class="no-js" lang="zxx">
 
 <head>
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap 引導程式 -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <!-- Fontawesome Icon 令人驚嘆的圖標-->
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <!-- Magnific Popup 華麗的彈出窗口 -->
+    <link rel="stylesheet" href="./assets/css/magnific-popup.min.css">
+
+    <!-- Swiper css 滑動器-->
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <style>
+        /* 控制元素在隐藏状态时保持布局 */
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
     <!--自訂-->
     <link rel="stylesheet" href="css/member.css">
 </head>
 
 <body>
-    <div class="magic-cursor relative z-10">
-        <div class="cursor"></div>
-        <div class="cursor-follower"></div>
-    </div>
+
     <!--=====   Preloader  預先載入器 =============-->
     <div id="preloader-container"></div>
 
@@ -24,9 +45,196 @@
 
     <!--=======	Header Area ===============-->
     <div id="header"></div>
+    <header class="th-header header-layout1">
+        <div class="header-top">
+            <div class="container th-container">
+                <div class="row justify-content-center justify-content-xl-between align-items-center">
+                    <div class="col-auto d-none d-md-block">
+                        <div class="header-links">
+                            <ul>
+                                <li class="d-none d-xl-inline-block"><i
+                                        class="fa-sharp fa-regular  fa-location-dot"></i>
+                                    <span>台北市中山區南京東路三段</span>
+                                </li>
+                                <li class="d-none d-xl-inline-block"><i class="fa-regular fa-clock"></i>
+                                    <span>星期一 到 五 早上 8.00 - 7.00 下午</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="header-right">
+                            <div class="header-links">
+                                <ul>
+                                    <li id="memberHomePage" class="d-none d-md-inline-block"><a href="#">會員中心</a>
+                                    </li>
 
+                                    <a href="../index.html" id="logoutBtn">
+                                        登出
+                                        <i class="fa-regular fa-user"></i>
+                                    </a>
+
+                                    <li>
+                                        <a href="#login-form" id="login-popup" class="popup-content">登入/註冊<i
+                                                class="fa-regular fa-user"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sticky-wrapper">
+            <!-- Main Menu Area -->
+            <div class="menu-area">
+                <div class="container th-container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <div class="header-logo">
+                                <a href="../index.html"><img src="../assets/img/logo.svg" alt="Tourm"></a>
+                            </div>
+                        </div>
+                        <div class="col-auto me-xl-auto">
+                            <nav class="main-menu d-none d-xl-inline-block">
+                                <ul>
+                                    <li><a href="../index.html">首頁</a></li>
+                                    <li><a href="../destination.html">行程</a></li>
+                                    <li><a href="../shop.html">商城</a></li>
+                                    <li><a href="../faq.html">問與答</a></li>
+
+                                </ul>
+                            </nav>
+                            <button type="button" class="th-menu-toggle d-block d-xl-none"><i
+                                    class="far fa-bars"></i></button>
+                        </div>
+                        <div class="col-auto d-none d-xl-block">
+
+                            <div class="header-button">
+                                <a href="../index.html#booking" class="th-btn style3 th-icon">立刻預定</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-bg" data-mask-src="../assets/img/logo_bg_mask.png"></div>
+            </div>
+        </div>
+
+
+        <div id="login-form" class="popup-login-register mfp-hide">
+            <!-- 登入/註冊 大標籤 -->
+            <ul class="nav" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-menu" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">登入</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-menu active" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">註冊</button>
+                </li>
+            </ul>
+
+            <!-- 登入/註冊 輸入框 -->
+            <div class="tab-content" id="pills-tabContent">
+                <!-- 登入表單 -->
+                <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="th-login-form">
+                        <form action="/MemberLogin" method="POST" class="login-form ajax-contact">
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label>電子信箱</label>
+                                    <input type="email" class="form-control" name="login_email" id="login_email"
+                                        required="required">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label>密碼</label>
+                                    <input type="password" class="form-control" name="login_password"
+                                        id="login_password" required="required">
+                                </div>
+                                <!-- <a href="/auth/google">使用 Google 登入</a> -->
+
+                                <div class="form-btn mb-20 col-12">
+                                    <button id="loginBtn" type="submit" class="th-btn btn-fw th-radius2">登入</button>
+                                </div>
+                            </div>
+                            <div id="forgot_url">
+                                <a href="my-account.html">忘記密碼</a>
+                            </div>
+                            <p class="form-messages mb-0 mt-3"></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+                    aria-labelledby="pills-profile-tab">
+                    <form class="login-form ajax-contact" id="registerForm">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="name">姓名*</label>
+                                <input type="text" class="form-control" name="register_name" id="register_name"
+                                    required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label>電子信箱*</label>
+                                <input type="email" class="form-control" name="register_email" id="register_email"
+                                    required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="password">密碼*</label>
+                                <input type="password" class="form-control" name="register_password"
+                                    id="register_password" required="required">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="password_confirm" style="color: red;">再次輸入密碼*</label>
+                                <input type="password" class="form-control" name="password_confirm"
+                                    id="password_confirm" required="required" style="border-color: red;">
+                                <!-- 修改 ID 屬性，原本為 password_comfirm -->
+                            </div>
+                            <div class="form-btn mt-20 col-12">
+                                <button id="registerBtn" type="button" class="th-btn btn-fw th-radius2">註冊</button>
+                            </div>
+                        </div>
+                        <p class="form-messages mb-0 mt-3"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
     <!--========= Breadcumb 麵包屑 ========== -->
-    <div id="breadcumb-wrapper"></div>
+    <div class="breadcumb-wrapper " data-bg-src="../assets/img/bg/breadcumb-bg.jpg">
+        <div class="container">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">會員中心</h1>
+                <ul class='breadcumb-menu'>
+                    <li>
+                        <a href="./membHomePage.html#/">
+                            <span class="menuName">會員中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/member/order/orderInfo">
+                            <span class="menuName">訂單查詢</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./my-information.html">
+                            <span class="menuName">資料修改</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/TIA103_Poject_Cruiseship_frontend/my-coupon.html">
+                            <span class="menuName">折扣查詢</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!--========= Team Area 團隊區 ============-->
     <div class="team" style="display: none;">
@@ -49,19 +257,31 @@
                     <div class="flex justify-between items-center pl-[30px] pr-6 border-t-2 pt-2">
                         <div class="discount-tab">
                             <ul class="ez-tab-content ez-tab-common-v1">
-                                <li class="active"><span class="ez-tab-item">可使用</span></li>
-                                <li class=""><span class="ez-tab-item">已使用</span></li>
-                                <li class=""><span class="ez-tab-item">已過期</span></li>
+                                <li class="active">
+                                    <span class="ez-tab-item" onclick="showCoupons('usable')">可使用</span>
+                                </li>
+                                <li>
+                                    <span class="ez-tab-item" onclick="showCoupons('used')">已使用</span>
+                                </li>
+                                <li>
+                                    <span class="ez-tab-item" onclick="showCoupons('expired')">已過期</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <div id="usableCoupons" class="coupon-list"></div> <!-- 顯示可使用的優惠券 -->
+                <div id="usedCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已使用的優惠券 -->
+                <div id="expiredCoupons" class="coupon-list" style="display: none;"></div> <!-- 顯示已過期的優惠券 -->
+
                 <!-- 當沒有優惠碼的情況 -->
-                <div class="no-coupons">
+                <div class="no-coupons" style="display: none;">
                     <img src="./assets/img/member/coupon.png" alt="No Coupons">
-                    <p>尚無折扣碼，來首頁看看有什麼優惠吧！</p>
-                    <a href="./index.html">回到首頁</a>
+                    <p>尚無折扣碼，來<a
+                            href="http://127.0.0.1:5501/TIA103_Poject_Cruiseship_frontend/index.html">首頁</a>看看有什麼優惠吧！
+                    </p>
+                    <a id="home" href="./index.html">回到首頁</a>
                 </div>
             </div>
         </div>
@@ -77,14 +297,6 @@
     <!--========= Footer Area 頁尾區 ===========-->
     <div id="footer-wrapper"></div>
 
-    <!-- Scroll To Top -->
-    <div class="scroll-top">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-            </path>
-        </svg>
-    </div>
 
     <!-- script 標籤 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -100,10 +312,21 @@
 
         $('#header').load('./component/header.html');
 
-        $('#breadcumb-wrapper').load('./component/login_breadcumb.html');
-
         $('#footer-wrapper').load('./component/footer.html');
+
+
+        if (sessionStorage.getItem('id') == null) {
+            console.log(123);
+            document.getElementById("login-popup").style.display = "visible";
+            document.getElementById("logoutBtn").style.display = "none";
+        } else {
+            document.getElementById("login-popup").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "visible";
+        }
+
     </script>
+
+    <script src="./js/coupon.js"></script>
 
 </body>
 

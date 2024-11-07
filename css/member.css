@@ -399,7 +399,7 @@ cupon {
   color: #555;
 }
 
-.no-coupons a {
+.no-coupons #home {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: #22c55e;

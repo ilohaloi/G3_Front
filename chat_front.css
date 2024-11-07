@@ -19,23 +19,7 @@ body {
 
 
 
-/* #startChatBtn {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 10px;
-    font-size: 18px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
-#startChatBtn:hover {
-    background-color: #218838;
-} */
 #chat-container {
     position: fixed; /* 固定定位，讓聊天室固定在視窗的指定位置 */
     bottom: 20px; /* 距離視窗底部20px */
@@ -69,7 +53,7 @@ body {
 }
 
 
-.cus_Message, .csMessage {
+.right-message, .left-message {
     max-width: 75%; /* 設定最大寬度，以控制訊息框的寬度 */
     min-width: 10%; /* 設定最小寬度，避免訊息框過小 */
     word-wrap: break-word; /* 啟用自動換行 */
@@ -84,14 +68,14 @@ body {
 }
 
 /* 客戶訊息樣式，靠右對齊 */
-.cus_Message {
+.right-message {
     background-color: #DCF8C6; /* 設定客戶訊息框背景顏色 */
     align-self: flex-end; /* 將訊息框靠右對齊 */
     text-align: right; /* 設置文字靠右對齊 */
 }
 
 /* 客服訊息樣式，靠左對齊 */
-.csMessage {
+.left-message {
     background-color: #F1F0F0; /* 設定客服訊息框背景顏色 */
     align-self: flex-start; /* 將訊息框靠左對齊 */
     text-align: left; /* 設置文字靠左對齊 */
@@ -119,7 +103,7 @@ body {
     font-size: 11px; /* 字體大小 */
 }
 #sendButton {
-    background-image: url('/send.png');  /* 設置背景圖片 */
+    background-image: url('send.png');  /* 設置背景圖片 */
     background-size: contain;  /* 讓背景圖片適應按鈕大小 */
     width: 20px; 
     height: 20px; 

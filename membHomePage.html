@@ -2,19 +2,38 @@
 <html class="no-js" lang="zxx">
 
 <head>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Bootstrap 引導程式 -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <!-- Fontawesome Icon 令人驚嘆的圖標-->
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
     <!-- Magnific Popup 華麗的彈出窗口 -->
-    <link rel="stylesheet" href="../assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="./assets/css/magnific-popup.min.css">
 
     <!-- Swiper css 滑動器-->
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/vue-router@4"></script>
+    <style>
+        /* 控制元素在隐藏状态时保持布局 */
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <!--自訂-->
+    <link rel="stylesheet" href="css/member.css">
+    <!--聊天室-->
+    <link rel="stylesheet" href="./chat_front.css">
+
+
 
 </head>
 
@@ -30,7 +49,6 @@
 
     <!--=======	Header Area ===============-->
     <div id="header"></div>
-
 
     <header class="th-header header-layout1">
         <div class="header-top">
@@ -193,96 +211,50 @@
 
     </header>
 
+
     <!--========= Breadcumb 麵包屑 ========== -->
-    <div class="breadcumb-wrapper " data-bg-src="./assets/img/bg/breadcumb-bg.jpg">
+    <div class="breadcumb-wrapper " data-bg-src="../assets/img/bg/breadcumb-bg.jpg">
         <div class="container">
             <div class="breadcumb-content">
-                <h1 class="breadcumb-title">忘記密碼</h1>
+                <h1 class="breadcumb-title">會員中心</h1>
                 <ul class='breadcumb-menu'>
                     <li>
-                        <a href="./index.html">
-                            <span class=>首頁</span>
+                        <a href="./membHomePage.html#/">
+                            <span class="menuName">會員中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./my-information.html">
+                            <span class="menuName">資料修改</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+
     <!--========= Team Area 團隊區 ============-->
-    <!-- <section class="space" style="display: none;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="th-account-form">
-                        <form action="javascript:void(0)" method="POST" class="account-form ajax-contact">
-                            <h3 class="text-center mt-n2 mb-30">重設密碼</h3>
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label>電子信箱</label>
-                                    <input type="email" class="form-control" name="email" id="email4" placeholder="">
-                                </div>
 
-                                <div class="form-btn col-12">
-                                    <button class="th-btn btn-fw th-radius2">取得新密碼</button>
-                                </div>
-                            </div>
-                            <p class="form-messages mb-0 mt-3"></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <section class="space" style="display: none;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="th-account-form">
-                        <form id="resetPasswordForm" action="javascript:void(0);" method="POST" class="account-form">
-                            <h3 class="text-center mt-n2 mb-30">重設密碼</h3>
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label>請輸入您的帳號，將郵寄新的密碼至您的電子信箱</label>
-                                    <input type="email" class="form-control" name="resetPW_email" id="resetPW_email"
-                                        placeholder="">
-                                </div>
 
-                                <div class="form-btn col-12">
-                                    <button type="submit" class="th-btn btn-fw th-radius2">取得新密碼</button>
-                                </div>
-                            </div>
-                            <p id="formMessages" class="form-messages mb-0 mt-3"></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div id="app">
 
-    <!--===  elements Area  ======-->
-    <div class="elements-sec bg-white overflow-hidden">
-        <div class="container-fluid">
-            <div class="tags-container relative"></div>
-        </div>
+
+
+        <router-view></router-view>
     </div>
+    <script type="module">
+        import { homePage } from './js/membHomePage.js'
+        const routes = [
+            { path: '/', name: 'homepage', component: homePage },
+        ];
 
-    <!--========= Footer Area 頁尾區 ===========-->
-    <div id="footer-wrapper"></div>
-
-
-
-    <script src="./assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script>
-        $('#preloader-container').load('./component/preloader.html', function () {
-            // 當預加載器加載完成後顯示內容
-            $('.space').show(); // 顯示隱藏的內容
-        });
-        $('#mobile-menu').load('./component/mobile_menu.html');
-
-        $('#header').load('./component/header.html');
-
-        $('#footer-wrapper').load('./component/footer.html');
-
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(),
+            routes
+        })
+        const app = Vue.createApp({})
+        app.use(router)
+        app.mount('#app');
 
         if (sessionStorage.getItem('id') == null) {
             console.log(123);
@@ -295,8 +267,40 @@
 
     </script>
 
-    <script src="./js/member_check.js"></script>
-    <script src="./js/member_update.js"></script>
+    <!--===  elements Area  ======-->
+    <div class="elements-sec bg-white overflow-hidden">
+        <div class="container-fluid">
+            <div class="tags-container relative"></div>
+        </div>
+    </div>
+
+    <!--Scroll To Top-- >
+
+
+            < !--========= Footer Area 頁尾區 =========== -->
+    <div id="footer-wrapper"></div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./chat_front.js"></script>
+
+    <script>
+        $('#preloader-container').load('./component/preloader.html', function () {
+            // 當預加載器加載完成後顯示內容
+            $('.team').show(); // 顯示隱藏的內容
+        });
+
+        $('#mobile-menu').load('./component/mobile_menu.html');
+
+        $('#sidemenu').load('./component/sidemenu.html');
+
+        $('#header').load('./component/header.html');
+
+        $('#footer-wrapper').load('./component/footer.html');
+    </script>
+
 </body>
 
 </html>
