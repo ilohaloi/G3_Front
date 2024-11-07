@@ -1,35 +1,29 @@
 export async function getProducts() {
 
     try {
-        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/prodget', {
-        method: 'post',
-        headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({action:'getAllprod'})
+        const response = await fetch(`http://localhost:8081/TIA103G3_Servlet/prodget?action=getAllprod`, {
+            method: 'GET',
+            mode:'cors'
         })
-        if (response.status === 200) { 
-            return response.json();
+        if (response.status === 200) {
+            return await response.json();
         }
-    } catch (error) { 
-        console.log('Error',error);
+    } catch(error) { 
+        console.log(error);
     }
 };
 export async function getProduct(id) {
 
     try {
-        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/prodget', {
-        method: 'post',
-        headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({action:'getProd',identity:id})
+        const response = await fetch(`http://localhost:8081/TIA103G3_Servlet/prodget?action=getProd&identity=${id}`, {
+            method: 'GET',
+            mode:'cors'
         })
-        if (response.status === 200) { 
-            return response.json();
+        if (response.status === 200) {
+            return await response.json();
         }
-    } catch (error) { 
-        console.log('Error',error);
+    } catch(error) { 
+        console.log(error);
     }
 };
 export function addTocart(item,qty,action) { 
@@ -38,7 +32,7 @@ export function addTocart(item,qty,action) {
         name: item.name,
         price: item.price,
         qty:qty,
-        imgs: item.img1
+        imgs: item.imgs
     }
 
     if (!localStorage.getItem('cart')) { 
@@ -54,7 +48,7 @@ export function updateCart(item,action) {
         case 'Increase':
             exitisItem = cart.find(obj => obj.id === item.id);
             if (exitisItem)
-                exitisItem.qty = item.qty;
+                exitisItem.qty += item.qty;
             else
                 cart.push(item);
             break;
@@ -82,19 +76,20 @@ export async function insertOrder(data) {
     try {
         const cart = JSON.parse(localStorage.getItem('cart'));
 
-        const response = fetch('http://localhost:8081/TIA103G3_Servlet/insertorder', {
+        const response = await fetch('http://localhost:8081/TIA103G3_Servlet/insertorder', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({data:data,prod:cart})
         })
-        // if (response.status === 200) { 
-        //     this.$router.push('/ordercomplete')
-        // } else {
-            
-        // }
+        if (response.status === 200) {
+            return true;
+        } else { 
+            alert("錯誤，稍後在試");
+        }
     } catch (error) { 
-
+        console.log(error);
+        
     }
 }
