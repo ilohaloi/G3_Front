@@ -9,44 +9,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 當 input 獲得焦點時，不清空值，允許直接修改
         input.addEventListener('focus', function () {
-            originalValue = this.value; // 保存當前值，以防需要恢復
+            if (this.type !== 'password') {
+                originalValue = this.value; // 保存當前值，以防需要恢復
+            }
         });
 
         // 當 input 失去焦點時，恢復原本的值（如果未輸入新內容）
         input.addEventListener('blur', function () {
-            if (this.value.trim() === '') { // 如果沒有輸入有效的新值
+            if (this.type !== 'password' && this.value.trim() === '') { // 如果沒有輸入有效的新值，且不是密碼欄位
                 this.value = originalValue; // 恢復為原本的值
             }
         });
     });
 
-        // 設置生日欄位的行為
-        const birthdayInput = document.getElementById('check_birthday');
-        if (birthdayInput.value) { // 如果生日欄位已有值
-            birthdayInput.setAttribute('readonly', true); // 設置為只讀狀態，禁止修改
-        }
-
-        // 設置密碼欄位為 password 類型，輸入時顯示 *
+    // 設置密碼欄位為 password 類型，輸入時顯示 *
         const passwordInput = document.getElementById('check_password');
         const passwordConfirmInput = document.getElementById('check_password_confirm');
-        passwordInput.setAttribute('type', 'password');
-        passwordConfirmInput.setAttribute('type', 'password');
-
         // 表單提交時的處理
         const memberForm = document.getElementById('memberUpdateForm');
         memberForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        // 檢查 password 欄位是否為空，若為空則從 localStorage 中取得密碼
-        const passwordField = document.getElementById('check_password');
-        const confirm_passwordField = document.getElementById('check_password_confirm');
-        let password = passwordField.value;
-        if (!password) { // 如果 password 為空
-            password = localStorage.getItem('password'); // 從 localStorage 中取得密碼
-            passwordField.value = password; // 將取得的密碼填入輸入欄位
-            confirm_passwordField.value = password;
+            event.preventDefault();
+            
+        // 選取密碼相關的輸入欄位
+        const password = document.getElementById('check_password').value.trim();
+        const passwordConfirm = document.getElementById('check_password_confirm').value.trim();
+        let passwordData;
+        
+        if(password!==""){
+            if(password!== passwordConfirm){
+                alert('密碼與確認密碼不相符，請重新輸入。');
+                return;
+            }else{
+                passwordData = password;
+            }
+        }else{
+            passwordData = sessionStorage.getItem('password');
         }
-
+        
         // 從表單中取得輸入的資料
         const updatedMemberData = {
             id: sessionStorage.getItem('id'),
@@ -54,14 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
             tell: document.getElementById('check_tell').value,
             address: document.getElementById('check_address').value,
             birthday: document.getElementById('check_birthday').value,
-            password: password, // 使用處理後的 password 值
-            password_confirm: document.getElementById('check_password_confirm').value
+            password:passwordData
         };
 
-        // 簡單驗證：確認密碼是否一致
-        if (updatedMemberData.password !== updatedMemberData.password_confirm) {
-            alert('密碼與確認密碼不相符，請重新輸入。');
-            return;
+        // 如果密碼不為空，則加入密碼欄位
+        if (password) {
+            updatedMemberData.password = password;
         }
 
         // 使用 Fetch API 發送 POST 請求給後端進行會員資料修改
@@ -88,7 +85,19 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('更新失敗，請稍後再試。');
         });
     });
-});
+
+            const birthdayIn = document.getElementById("check_birthday");
+            const birthdayDiv = document.getElementById("birthdayDiv");
+
+        if (birthdayIn.value === "") {
+            // 如果生日没填，则显示整个 div
+            birthdayDiv.style.display = "none";
+        } else {
+            // 如果有生日数据，则隐藏整个 div
+            birthdayDiv.style.display = "block";
+        }
+
+        });
 //----------------會員資料修改----------------//
 // document.addEventListener('DOMContentLoaded', function(){ 
     

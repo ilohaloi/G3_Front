@@ -39,6 +39,7 @@
                             <ul>
                                 <li class="d-none d-xl-inline-block"><i
                                         class="fa-sharp fa-regular  fa-location-dot"></i>
+
                                     <span>台北市中山區南京東路三段</span>
                                 </li>
                                 <li class="d-none d-xl-inline-block"><i class="fa-regular fa-clock"></i>
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="sticky-wrapper">
             <!-- Main Menu Area -->
@@ -210,6 +212,28 @@
                 </ul>
             </div>
         </div>
+
+    </header>
+
+    <!--========= Breadcumb 麵包屑 ========== -->
+    <div class="breadcumb-wrapper " data-bg-src="../assets/img/bg/breadcumb-bg.jpg">
+        <div class="container">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">會員中心</h1>
+                <ul class='breadcumb-menu'>
+                    <li>
+                        <a href="./membHomePage.html#/">
+                            <span class="menuName">會員中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./my-information.html">
+                            <span class="menuName">資料修改</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!--========= Team Area 團隊區 ============-->
@@ -233,7 +257,9 @@
                                 <input type="text" id="check_tell" name="check_tell">
                             </div>
 
-                            <div class="mb-3">
+
+                            <div class="mb-3" id="birthdayDiv">
+
                                 <label for="birthday">生日:</label>
                                 <span id="birthdayNote" style="color: red; font-size: 0.9em;">只能輸入一次，請小心輸入</span>
                                 <input type="date" id="check_birthday" name="check_birthday">
@@ -241,11 +267,13 @@
 
                             <div class="mb-3">
                                 <label for="password">請輸入新密碼:</label>
-                                <input type="text" id="check_password" name="check_password">
+
+                                <input type="password" id="check_password" name="check_password">
                             </div>
                             <div class="mb-3">
                                 <label for="check_password_confirm">再次確認新密碼:</label>
-                                <input type="text" id="check_password_confirm" name="check_password_confirm">
+                                <input type="password" id="check_password_confirm" name="check_password_confirm">
+
                             </div>
                             <div class="space-extra-bottom">
                                 <button type="submit" id="member_update_submit" class="th-btn">提交修改</button>
