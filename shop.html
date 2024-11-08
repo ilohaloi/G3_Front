@@ -607,7 +607,7 @@
                                 <tr class="cart item" v-for="(item,index) in cart" :key="index">
                                     <td data-title="Product">
                                         <router-link :to="{ name: 'prod_detail', params: { id: item.id }}">
-                                            <img width="50" height="91" :src="item.imgs[0]" alt="Image">
+                                            <img width="50" height="91" :src="item.imgs" alt="Image">
                                         </router-link>
                                     </td>
                                     <td data-title="Name">
