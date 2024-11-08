@@ -282,7 +282,17 @@
             },
             methods: {
                 addProd(item) {
-                    addTocart(item, 1, "existIncrease");
+
+                    const prod = {
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        qty: 1,
+                        imgs: [item.img1]
+                    }
+
+
+                    addTocart(prod, 1, "existIncrease");
                 },
 
             },
