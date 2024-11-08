@@ -32,7 +32,7 @@ export function addTocart(item,qty,action) {
         name: item.name,
         price: item.price,
         qty:qty,
-        imgs: item.img1
+        imgs: item.imgs[0]
     }
 
     if (!localStorage.getItem('cart')) { 
