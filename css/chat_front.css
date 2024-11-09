@@ -22,7 +22,7 @@ body {
 
 #chat-container {
     position: fixed; /* 固定定位，讓聊天室固定在視窗的指定位置 */
-    bottom: 20px; /* 距離視窗底部20px */
+    bottom: 65px; /* 距離視窗底部20px */
     left: 20px; /* 距離視窗左邊20px，這樣聊天室顯示在左下角 */
     width: 300px; /* 聊天室的寬度為300px */
     height: 400px; /* 聊天室的初始高度為400px */
@@ -103,7 +103,7 @@ body {
     font-size: 11px; /* 字體大小 */
 }
 #sendButton {
-    background-image: url('send.png');  /* 設置背景圖片 */
+    background-image: url('../img/send.png');  /* 設置背景圖片 */
     background-size: contain;  /* 讓背景圖片適應按鈕大小 */
     width: 20px; 
     height: 20px; 

@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (messageContent !== '') {
             // 將訊息包裝為 JSON 格式
             var json_str = JSON.stringify({
-                id:JSON.parse(sessionStorage.getItem("ID")),
+                id:JSON.parse(sessionStorage.getItem("id")),
                 receiver : 500,
                 sender : "member",                  // member : 會員  / employ : 客服
                 content: messageContent,
@@ -142,21 +142,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
     chatHeader.onclick = function () {
-        console.log("id:"+sessionStorage.getItem("ID"))
-        if (sessionStorage.getItem("ID") == null){
+        console.log("id:"+sessionStorage.getItem("id"))
+        if (sessionStorage.getItem("id") == null){
             document.getElementById('login-popup').click();
             alert('請先登入');
         }else{
             var chatToggle = document.getElementById('chat-toggle');
 
             if(sessionStorage.getItem("ws") == null || sessionStorage.getItem("ws") == false){
-                ws = new WebSocket('ws://localhost:8081/TIA103G3_Servlet/ChatWS/'+sessionStorage.getItem("ID")); // 替換為你的 WebSocket 伺服器端點
+                ws = new WebSocket('ws://localhost:8081/TIA103G3_Servlet/ChatWS/'+sessionStorage.getItem("id")); // 替換為你的 WebSocket 伺服器端點
                 console.log("New WS");
                 sessionStorage.setItem("ws", true);
 
                 ws.onopen = function () {
                     console.log("Connected to WebSocket");                  
-                    fetchChatById(sessionStorage.getItem("ID"));
+                    fetchChatById(sessionStorage.getItem("id"));
                     // document.getElementById("status").innerText = "已連接";
                 };
         
