@@ -18,11 +18,12 @@ document.getElementById('resetPasswordForm').addEventListener('submit', function
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
-            alert('已發送重設密碼的郵件，請檢查您的收件匣');
+            alert(data.message);
             console.log("已傳送");
         } else {
             alert(data.message);
             console.log("信箱未註冊或其他錯誤: " + data.message);
+            document.getElementById('resetPW_email').value = ''; // 清除輸入框的值
         }
     })
     .catch(error => {
