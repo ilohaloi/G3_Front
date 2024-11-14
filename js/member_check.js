@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     
     const userID = sessionStorage.getItem("id");
-    // const userPassword = localStorage.getItem("Password");
 
     if (userID) {
         // 使用 Fetch API 發送 POST 請求給後端
@@ -21,18 +20,23 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(data);
 
             document.getElementById('username').value = data.name !== null ? data.name : '';
-            document.getElementById('check_tell').value = data.tell !== null ? data.tell : '';
-            document.getElementById('check_address').value = data.address !== null ? data.address : '';
-            document.getElementById('check_birthday').value = data.birthday !== null ? data.birthday : '';
-            sessionStorage.setItem('password',data.password);
+            document.getElementById('check_tell').value = data.tell != null ? data.tell : '';
+            document.getElementById('check_address').value = data.address != null ? data.address : '';
+
+            // 填入生日欄位，並根據值設置是否為 readonly
+            const birthdayField = document.getElementById('check_birthday');
+            birthdayField.value = data.birthday ? data.birthday : '';
+            if (birthdayField.value) {
+                birthdayField.readOnly = true;
+            }
+
+            // 儲存密碼到 sessionStorage
+            sessionStorage.setItem('password', data.password);
         })
         .catch(error => {
-            console.error('無法取得會員資料');
+            console.error('無法取得會員資料', error);
         });
     } else {
         console.error('找不到會員 ID');
     }
-
-
 });
-

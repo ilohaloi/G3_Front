@@ -34,7 +34,7 @@ document.getElementById('loginBtn').addEventListener('click', async function (e)
             //window.location.replace("../destination.html#/checkout");
         
         } else if(response.status === 401){
-            alert('登入失敗，請先註冊帳號');
+            alert('登入失敗，密碼不正確或請先註冊帳號');
         }
     } catch (error) {
         console.error("發生錯誤：", error);
@@ -52,28 +52,4 @@ document.getElementById('memberHomePage').addEventListener('click', function (){
 });
 
 
-// // 新增：顯示/隱藏密碼功能
-// function togglePassword(inputId) {
-//     const input = document.getElementById(inputId);
-//     input.type = input.type === 'password' ? 'text' : 'password';
-// }
-
-// // 新增：註冊表單提交驗證
-// document.getElementById('registerBtn').addEventListener('click', function () {
-//     const email = document.getElementById('register_email').value;
-//     const password = document.getElementById('register_password').value;
-//     const passwordConfirm = document.getElementById('password_comfirm').value;
-
-//     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     if (!emailPattern.test(email)) {
-//         alert('請輸入有效的電子信箱地址');
-//         return;
-//     }
-
-//     if (password.length < 8) {
-//         alert('密碼必須至少包含 8 個字元');
-//         return;
-//     }
-    //     document.getElementById('registerForm').submit();
-    // });
 
