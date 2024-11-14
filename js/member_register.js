@@ -31,16 +31,16 @@ document.getElementById('registerBtn').addEventListener('click', function(event)
     }
 
     if (password !== passwordConfirm) {
-        formMessages.innerText = '密碼不一致，請重新輸入';
+        alert('密碼不一致，請重新輸入');
         passwordConfirmField.value = ''; // 清除確認密碼欄位
         return;
-    }
+    }   
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        formMessages.innerText = '請輸入有效的電子郵件地址';
+    if (email && !emailRegex.test(email)) {
+        alert('請輸入正確的電子郵件格式');
         return;
-    }
+    }  
 
     // 禁用註冊按鈕，防止重複提交
     const disableButton = (disabled) => {
@@ -66,10 +66,13 @@ document.getElementById('registerBtn').addEventListener('click', function(event)
         if (response.ok && contentType && contentType.includes("application/json")) {
             return response.json();
         } else if (response.status === 400) {
+            alert('資料不完整，請檢查必填欄位。');
             throw new Error('資料不完整，請檢查必填欄位。');
         } else if (response.status === 409) {
+            alert('該電子郵件已被使用，請更換電子郵件。');
             throw new Error('該電子郵件已被使用，請更換電子郵件。');
         } else {
+            alert('註冊失敗，請稍後再試。');
             throw new Error('註冊失敗，請稍後再試。');
         }
     })
